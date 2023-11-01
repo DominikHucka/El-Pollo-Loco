@@ -8,6 +8,7 @@ class Character extends MovableObject {
         'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk5.png',
         'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk6.png',
     ];
+    world;
 
     constructor() {
         super().loadImage('img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png');
@@ -18,10 +19,13 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageChache[path];
-            this.currentImage++;
+            
+            if (this.world.keyboard.RIGHT) {
+                let i = this.currentImage % this.IMAGES_WALKING.length;
+                let path = this.IMAGES_WALKING[i];
+                this.img = this.imageChache[path];
+                this.currentImage++;
+            }
         }, 100); 
     }
   
