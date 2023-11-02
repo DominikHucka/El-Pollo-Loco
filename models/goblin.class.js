@@ -19,6 +19,7 @@ class Goblin extends MovableObject {
     }
 
     animate() {
+        this.otherDirection = true;
         this.moveLeft();
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_WALKING.length;

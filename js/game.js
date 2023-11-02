@@ -14,7 +14,7 @@ function init() {
 
 window.addEventListener('keydown', (event) => {
      if (event.keyCode == 39) {
-          keyboard.RIGTH = true;
+          keyboard.RIGHT = true;
      }
 
      if (event.keyCode == 37) {
@@ -37,7 +37,7 @@ window.addEventListener('keydown', (event) => {
 
 window.addEventListener('keyup', (event) => {
      if (event.keyCode == 39) {
-          keyboard.RIGTH = false;
+          keyboard.RIGHT = false;
      }
 
      if (event.keyCode == 37) {
