@@ -1,7 +1,6 @@
 class World {
     character = new Character();
-    enemies = level1.enemies;
-    backgroundObjects = level1.backgroundObjects;
+    firstLevel = level1;
     canvas;
     ctx;
     keyboard;
@@ -25,10 +24,12 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectToMap(this.backgroundObjects);
+        this.addObjectToMap(this.firstLevel.backgroundObjects);
+        this.addObjectToMap(this.firstLevel.firstBoss);
         this.addToMap(this.character);
-        this.addObjectToMap(this.enemies);
+        this.addObjectToMap(this.firstLevel.enemies);
         this.ctx.translate(-this.camera_x, 0);
+        
 
         //draw() wird immer wieder aufgerufen
         let self = this;
