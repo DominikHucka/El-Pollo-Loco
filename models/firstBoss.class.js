@@ -3,7 +3,7 @@ class FirstBoss extends MovableObject {
     height = 350;
     width = 350;
     y = 150;
-    // x = 1000;
+    x = 1500;
 
     IMAGES_WALKING = [
         // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk1.png',
@@ -21,18 +21,16 @@ class FirstBoss extends MovableObject {
 
 
     constructor() {
-        super().loadImage('img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Anger1.png');
+        super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
     }
 
 
     animate() {
+        this.otherDirection = true;
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageChache[path];
-            this.currentImage++;
+          this.playAnimation();
         }, 200); 
     }
 }

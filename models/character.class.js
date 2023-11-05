@@ -8,18 +8,28 @@ class Character extends MovableObject {
         'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk5.png',
         'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk6.png',
     ];
+    IMAGES_JUMPING = [
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump1.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump2.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump3.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump4.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump5.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump6.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump7.png',
+    ];
     world;
-    walking_sound = new Audio('audio/walking_character/Footstep_Dirt_01.mp3');
+    walking_sound = new Audio('audio/walking_character/step_cloth1.mp3');
 
     constructor() {
-        super().loadImage('img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png');
+        super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
-
+        this.loadImages(this.IMAGES_JUMPING);
+        this.applyGravity();
         this.animate();
     }
 
-    animate() {
 
+    animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.firstLevel.level_end_x) {
                 this.x += this.speed;
@@ -31,27 +41,28 @@ class Character extends MovableObject {
                 this.otherDirection = true;
                 this.walking_sound.play();
             }
+
             if (this.world.keyboard.UP) {
-                this.y -= this.speed;
+                this.speedY = 15;
             }
-            if (this.world.keyboard.DOWN) {
-                this.y += this.speed;
-            }
-            this.world.camera_x = -this.x +100;
+            // if (this.world.keyboard.DOWN) {
+            //     this.y += this.speed;
+            // }
+            this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
-        setInterval(() => {
-            
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 
-                let i = this.currentImage % this.IMAGES_WALKING.length;
-                let path = this.IMAGES_WALKING[i];
-                this.img = this.imageChache[path];
-                this.currentImage++;
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_HIGH_JUMP);
             }
-        }, 80); 
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.playAnimation(this.IMAGES_HIGH_JUMP);
+            }
+
+        }, 100);
     }
-  
+
 
     jump() {
 
