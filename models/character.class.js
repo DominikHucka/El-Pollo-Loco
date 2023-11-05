@@ -43,7 +43,7 @@ class Character extends MovableObject {
             }
 
             if (this.world.keyboard.UP) {
-                this.speedY = 15;
+                this.speedY = 10;
             }
             // if (this.world.keyboard.DOWN) {
             //     this.y += this.speed;
@@ -54,13 +54,13 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_HIGH_JUMP);
+                this.playAnimation(this.IMAGES_JUMPING);
+            } else {
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    this.playAnimation(this.IMAGES_WALKING);
+                }
             }
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                this.playAnimation(this.IMAGES_HIGH_JUMP);
-            }
-
-        }, 100);
+        }, 40);
     }
 
 

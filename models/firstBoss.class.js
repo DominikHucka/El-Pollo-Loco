@@ -30,7 +30,7 @@ class FirstBoss extends MovableObject {
     animate() {
         this.otherDirection = true;
         setInterval(() => {
-          this.playAnimation();
+          this.playAnimation(this.IMAGES_WALKING);
         }, 200); 
     }
 }
