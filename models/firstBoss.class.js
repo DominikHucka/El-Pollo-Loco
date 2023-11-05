@@ -3,7 +3,7 @@ class FirstBoss extends MovableObject {
     height = 350;
     width = 350;
     y = 150;
-    x = 1500;
+    x = 1400;
 
     IMAGES_WALKING = [
         // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk1.png',

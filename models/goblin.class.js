@@ -1,5 +1,5 @@
 class Goblin extends MovableObject {
-   goblinEffects = new Audio('audio/enemies/goblin-15.wav');
+   goblinSoundEffects = new Audio('audio/enemies/goblin-15.wav');
 
     IMAGES_WALKING = [
         'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk1.png',
@@ -20,7 +20,6 @@ class Goblin extends MovableObject {
     }
 
     animate() {
-        this.otherDirection = true;
         setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
@@ -28,7 +27,7 @@ class Goblin extends MovableObject {
             this.playAnimation(this.IMAGES_WALKING);
         }, 200); 
         setTimeout(() => {
-            this.goblinEffects.play();
+            this.goblinSoundEffects.play();
         },2000);
     }
 }

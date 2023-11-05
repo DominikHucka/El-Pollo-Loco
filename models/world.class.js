@@ -29,11 +29,11 @@ class World {
         this.addToMap(this.character);
         this.addObjectToMap(this.firstLevel.enemies);
         this.ctx.translate(-this.camera_x, 0);
-        
+
 
         //draw() wird immer wieder aufgerufen
         let self = this;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             self.draw();
         });
     }
@@ -42,21 +42,32 @@ class World {
     addObjectToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
-        }) 
+        })
     }
 
 
     addToMap(mo) {
         if (mo.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(mo.img.width, 0);
-            this.ctx.scale(-1, 1);
-            mo.x = mo.x * -1;
+            this.flipImage(mo);
         }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+        mo.draw(this.ctx);
+        mo.drawFrame(this.ctx);
         if (mo.otherDirection) {
-            this.ctx.restore();
-            mo.x = mo.x * -1;
+            this.flipImageBack(mo);
         }
+    }
+
+
+    flipImage(mo) {
+        this.ctx.save();
+        this.ctx.translate(mo.img.width, 0);
+        this.ctx.scale(-1, 1);
+        mo.x = mo.x * -1;
+    }
+
+
+    flipImageBack(mo) {
+        this.ctx.restore();
+        mo.x = mo.x * -1;
     }
 }
