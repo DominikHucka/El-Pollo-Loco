@@ -19,6 +19,13 @@ class Character extends MovableObject {
     ];
     world;
     walking_sound = new Audio('audio/walking_character/step_cloth1.mp3');
+    offsetY = {
+        bottom: 0,
+        top: 0,
+        left: 0,
+        rigth: 0,
+    };
+        
 
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
