@@ -17,20 +17,40 @@ class Character extends MovableObject {
         'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump6.png',
         'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Jump/jump7.png',
     ];
+    IMAGES_DEAD = [
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death1.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death2.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death3.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death4.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death5.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death6.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death7.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death8.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death9.png',
+        'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Death/death10.png',
+    ];
+    IMAGES_HURT = [
+       'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Hurt/hurt1.png',
+       'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Hurt/hurt2.png',
+       'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Hurt/hurt3.png',
+       'img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Hurt/hurt4.png',
+    ];
     world;
     walking_sound = new Audio('audio/walking_character/step_cloth1.mp3');
-    offsetY = {
-        bottom: 0,
-        top: 0,
-        left: 0,
-        rigth: 0,
+    offset = {
+        bottom: 15,
+        top: 55,
+        left: 20,
+        right: 55
     };
-        
+
 
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_HURT);
         this.applyGravity();
         this.animate();
     }
@@ -38,9 +58,10 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && this.x < this.world.firstLevel.level_end_x) {
-                 this.moveRight();
-                 this.walking_sound.play();
+          
+           if (this.world.keyboard.RIGHT && this.x < this.world.firstLevel.level_end_x) {
+                this.moveRight();
+                this.walking_sound.play();
             }
             if (this.world.keyboard.LEFT && this.x > -500) {
                 this.moveLeft();
@@ -49,6 +70,7 @@ class Character extends MovableObject {
             if (this.world.keyboard.UP && !this.isAboveGround()) {
                 this.jump();
             }
+        
             // if (this.world.keyboard.DOWN) {
             //     this.y += this.speed;
             // }
@@ -57,7 +79,14 @@ class Character extends MovableObject {
 
 
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+            }
+            else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
+            }
+
+            else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else {
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {

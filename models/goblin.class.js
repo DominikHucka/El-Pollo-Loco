@@ -1,5 +1,11 @@
 class Goblin extends MovableObject {
 //    goblinSoundEffects = new Audio('audio/enemies/goblin-15.wav');
+offset = {
+    left: 35,
+    top: 40,
+    right: 35,
+    bottom: 40
+};
 
     IMAGES_WALKING = [
         'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk1.png',

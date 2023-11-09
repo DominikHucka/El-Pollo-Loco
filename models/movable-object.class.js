@@ -10,7 +10,15 @@ class MovableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 1;
-    
+    energy = 100;
+    lastHit = 0;
+    offset = {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0
+    };
+
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -22,18 +30,18 @@ class MovableObject {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";
-            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.bottom - this.offset.top);
             ctx.stroke();
         }
     }
 
 
     isColliding(mo) {
-        return (this.X + this.width) >= mo.X && this.X <= (mo.X + mo.width) &&
-            (this.Y + this.offsetY.top + this.height) >= mo.Y &&
-            (this.Y + this.offsetY.bottom) <= (mo.Y + mo.height) &&
-            mo.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+        // mo.onCollisionCourse;
     }
 
 
@@ -69,9 +77,9 @@ class MovableObject {
     }
 
 
-    playAnimation(img) {
-        let i = this.currentImage % this.IMAGES_WALKING.length;
-        let path = img[i];
+    playAnimation(images) {
+        let i = this.currentImage % images.length;
+        let path = images[i];
         this.img = this.imageChache[path];
         this.currentImage++;
     }
@@ -91,6 +99,28 @@ class MovableObject {
 
     jump() {
         this.speedY = 15;
+    }
+
+
+    isDead() {
+      return this.energy == 0;
+    }
+
+
+    hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit; 
+        timepassed = timepassed / 1000;
+        return timepassed < 1;
     }
 }
 
