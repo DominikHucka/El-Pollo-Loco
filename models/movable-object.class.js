@@ -103,7 +103,7 @@ class MovableObject {
 
 
     isDead() {
-      return this.energy == 0;
+        return this.energy == 0;
     }
 
 
@@ -118,7 +118,7 @@ class MovableObject {
 
 
     isHurt() {
-        let timepassed = new Date().getTime() - this.lastHit; 
+        let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
         return timepassed < 1;
     }
