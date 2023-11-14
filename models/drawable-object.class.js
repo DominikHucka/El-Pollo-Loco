@@ -12,13 +12,17 @@ class DrawableObject {
         this.img = new Image();
         this.img.src = path;
     }
-
-
+    /**
+     * 
+     * @param {Function} ctx - draw all this Objects => WORLD
+     */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
-
-
+    /**
+     * 
+     * @param {Function} ctx - draw Stroke around the Objects
+     */
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Goblin) {
             ctx.beginPath();
@@ -28,25 +32,15 @@ class DrawableObject {
             ctx.stroke();
         }
     }
-
-       /**
-     * 
-     * @param {Array} arr - ['img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png','img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk2.png', .....] 
-     */
-       loadImages(arr) {
+    /**
+  * 
+  * @param {Array} arr - ['img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png','img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk2.png', .....] 
+  */
+    loadImages(arr) {
         arr.forEach(path => {
             let img = new Image();
             img.src = path;
             this.imageChache[path] = img;
         });
     }
-
-
-    drawObejcts(images) {
-        let i = this.currentImage = images.length;
-        let path = images[i];
-        this.img = this.imageChache[path];
-        this.currentImage++;
-    }
-
 }

@@ -39,12 +39,10 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectToMap(this.firstLevel.backgroundObjects);
         this.addObjectToMap(this.firstLevel.firstBoss);
-        this.addToMap(this.statusBar);
+        // this.addToMap(this.statusBar);
         this.addToMap(this.character);
         this.addObjectToMap(this.firstLevel.enemies);
         this.ctx.translate(-this.camera_x, 0);
-
-
         //draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function () {
