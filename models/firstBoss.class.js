@@ -6,17 +6,14 @@ class FirstBoss extends MovableObject {
     x = 1400;
 
     IMAGES_WALKING = [
-        // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk1.png',
-        // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk2.png',
-        // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk3.png',
-        // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk4.png',
-        // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk5.png',
-        // 'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Walk6.png',
-        'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Anger1.png',
-        'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Anger2.png',
-        'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Anger3.png',
-        'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Anger4.png',
-        'img/bosses-pixel-art-game-assets-pack/PNG/Boss1/Anger5.png',
+       'img/4_enemie_boss_chicken/2_alert/G5.png',
+       'img/4_enemie_boss_chicken/2_alert/G6.png',
+       'img/4_enemie_boss_chicken/2_alert/G7.png',
+       'img/4_enemie_boss_chicken/2_alert/G8.png',
+       'img/4_enemie_boss_chicken/2_alert/G9.png',
+       'img/4_enemie_boss_chicken/2_alert/G10.png',
+       'img/4_enemie_boss_chicken/2_alert/G11.png',
+       'img/4_enemie_boss_chicken/2_alert/G12.png',
     ];
 
 

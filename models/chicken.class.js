@@ -1,19 +1,16 @@
 class Goblin extends MovableObject {
 //    goblinSoundEffects = new Audio('audio/enemies/goblin-15.wav');
-offset = {
-    left: 35,
-    top: 40,
-    right: 35,
-    bottom: 40
-};
+// offset = {
+//     left: 35,
+//     top: 40,
+//     right: 35,
+//     bottom: 40
+// };
 
     IMAGES_WALKING = [
-        'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk1.png',
-        'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk2.png',
-        'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk3.png',
-        'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk4.png',
-        'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk5.png',
-        'img/pixel-art-monster-enemy-game-sprites/PNG/goblin/walk6.png',
+        'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
+        'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
+        'img/3_enemies_chicken/chicken_normal/1_walk/3_w.png',
 ];
 
     constructor() {
