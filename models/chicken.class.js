@@ -1,4 +1,7 @@
-class Goblin extends MovableObject {
+class Chicken extends MovableObject {
+    width = 80;
+    height = 80;
+    y = 380;
 //    goblinSoundEffects = new Audio('audio/enemies/goblin-15.wav');
 // offset = {
 //     left: 35,
@@ -16,7 +19,6 @@ class Goblin extends MovableObject {
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.x = 200 + Math.random() * 500;
-        this.y = 325;
         this.speed = 0.15 + Math.random() * 0.25;
         this.loadImages(this.IMAGES_WALKING);
         this.animate();

@@ -2,7 +2,7 @@ class Level {
     enemies;
     backgroundObjects;
     firstBoss;
-    level_end_x = 1500;
+    level_end_x = 2000;
     // level1_backgroundEffect = new Audio('audio/levels/dark_cavern_ambient_001.ogg');
 
 

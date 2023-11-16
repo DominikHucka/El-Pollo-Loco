@@ -1,5 +1,7 @@
 class Character extends MovableObject {
     speed = 5;
+    width = 200;
+    height = 300;
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -60,10 +62,12 @@ class Character extends MovableObject {
            if (this.world.keyboard.RIGHT && this.x < this.world.firstLevel.level_end_x) {
                 this.moveRight();
                 this.walking_sound.play();
+                this.otherDirection = false;
             }
             if (this.world.keyboard.LEFT && this.x > -500) {
                 this.moveLeft();
                 this.walking_sound.play();
+                this.otherDirection = true;
             }
             if (this.world.keyboard.UP && !this.isAboveGround()) {
                 this.jump();

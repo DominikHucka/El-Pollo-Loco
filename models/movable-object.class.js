@@ -2,7 +2,7 @@ class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
-    acceleration = 1;
+    acceleration = 2;
     energy = 100;
     lastHit = 0;
     offset = {
@@ -33,7 +33,7 @@ class MovableObject extends DrawableObject {
 
 
     isAboveGround() {
-        return this.y < 300;
+        return this.y < 150;
     }
 
 
@@ -47,18 +47,18 @@ class MovableObject extends DrawableObject {
 
     moveRight() {
         this.x += this.speed;
-        this.otherDirection = false;
+        // this.otherDirection = false;
     }
 
 
     moveLeft() {
         this.x -= this.speed;
-        this.otherDirection = true;
+        // this.otherDirection = true;
     }
 
 
     jump() {
-        this.speedY = 15;
+        this.speedY = 20;
     }
 
 

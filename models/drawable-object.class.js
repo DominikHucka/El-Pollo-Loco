@@ -3,10 +3,9 @@ class DrawableObject {
     imageChache = {};
     currentImage = 0;
     x = 50;
-    y = 300;
+    y = 50;
     height = 150;
     width = 150;
-
 
     loadImage(path) {
         this.img = new Image();
@@ -24,7 +23,7 @@ class DrawableObject {
      * @param {Function} ctx - draw Stroke around the Objects
      */
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Goblin) {
+        if (this instanceof Character || this instanceof Chicken) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";
