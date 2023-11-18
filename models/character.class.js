@@ -1,7 +1,8 @@
 class Character extends MovableObject {
-    speed = 5;
-    width = 200;
-    height = 300;
+    speed = 6;
+    width = 150;
+    height = 250;
+    y = 200;
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -38,10 +39,10 @@ class Character extends MovableObject {
     world;
     walking_sound = new Audio('audio/walking_character/step_cloth1.mp3');
     offset = {
-        bottom: 15,
-        top: 55,
-        left: 20,
-        right: 55
+        bottom: 10,
+        top: 90,
+        left: 10,
+        right: 20,
     };
 
 
@@ -59,7 +60,7 @@ class Character extends MovableObject {
     animate() {
         setInterval(() => {
           
-           if (this.world.keyboard.RIGHT && this.x < this.world.firstLevel.level_end_x) {
+           if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.walking_sound.play();
                 this.otherDirection = false;

@@ -1,9 +1,10 @@
-class FirstBoss extends MovableObject {
+class EndBoss extends MovableObject {
 
-    height = 350;
+    height = 450;
     width = 350;
-    y = 150;
-    x = 1400;
+    y = 30;
+    x = 1700;
+    // x = 400;
 
     IMAGES_WALKING = [
        'img/4_enemie_boss_chicken/2_alert/G5.png',
@@ -25,7 +26,6 @@ class FirstBoss extends MovableObject {
 
 
     animate() {
-        this.otherDirection = true;
         setInterval(() => {
           this.playAnimation(this.IMAGES_WALKING);
         }, 200); 

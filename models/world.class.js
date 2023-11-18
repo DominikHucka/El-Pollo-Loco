@@ -1,11 +1,11 @@
 class World {
     character = new Character();
-    firstLevel = level1;
+    level = level1;
     canvas;
     ctx;
     keyboard;
     camera_x = 0;
-    // statusBar = new StatusBar();
+    statusBar = new StatusBar();
 
 
     constructor(canvas, keyboard) {
@@ -25,9 +25,10 @@ class World {
 
     checkCollisions() {
         setInterval(() => {
-            this.firstLevel.enemies.forEach((enemy) => {
+            this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
+                    this.statusBar.setPercentage(this.character.energy);
                 }
             })
         }, 1000);
@@ -37,11 +38,13 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectToMap(this.firstLevel.backgroundObjects);
-        this.addObjectToMap(this.firstLevel.firstBoss);
-        // this.addToMap(this.statusBar);
+        this.addObjectToMap(this.level.backgroundObjects);
+        this.addObjectToMap(this.level.chickenBoss);
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBar);
+        this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
-        this.addObjectToMap(this.firstLevel.enemies);
+        this.addObjectToMap(this.level.enemies);
         this.ctx.translate(-this.camera_x, 0);
         //draw() wird immer wieder aufgerufen
         let self = this;
@@ -72,7 +75,7 @@ class World {
 
     flipImage(mo) {
         this.ctx.save();
-        this.ctx.translate(mo.img.width, 0);
+        this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
         mo.x = mo.x * -1;
     }

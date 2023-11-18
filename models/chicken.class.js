@@ -1,7 +1,7 @@
 class Chicken extends MovableObject {
     width = 80;
     height = 80;
-    y = 380;
+    y = 350;
 //    goblinSoundEffects = new Audio('audio/enemies/goblin-15.wav');
 // offset = {
 //     left: 35,
