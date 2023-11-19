@@ -70,10 +70,9 @@ class Character extends MovableObject {
                 this.walking_sound.play();
                 this.otherDirection = true;
             }
-            if (this.world.keyboard.UP && !this.isAboveGround()) {
+            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
             }
-        
             // if (this.world.keyboard.DOWN) {
             //     this.y += this.speed;
             // }

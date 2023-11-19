@@ -1,7 +1,7 @@
 class Chicken extends MovableObject {
     width = 80;
     height = 80;
-    y = 350;
+    y = 360;
 //    goblinSoundEffects = new Audio('audio/enemies/goblin-15.wav');
 // offset = {
 //     left: 35,
@@ -9,12 +9,12 @@ class Chicken extends MovableObject {
 //     right: 35,
 //     bottom: 40
 // };
-
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
         'img/3_enemies_chicken/chicken_normal/1_walk/3_w.png',
 ];
+
 
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
@@ -23,6 +23,7 @@ class Chicken extends MovableObject {
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
     }
+
 
     animate() {
         setInterval(() => {
