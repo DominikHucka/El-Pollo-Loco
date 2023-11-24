@@ -26,9 +26,9 @@ class ThrowableObjects extends MovableObject {
         setInterval(() => {
             setTimeout(() => {
                 this.playAnimation(this.IMAGES_THROWBOTTLE);
-                this.x += 10;
+                this.x += 2.5;
             }, 5);
            
-        }, 1000 / 60);
+        }, 500 / 60);
     } 
 }   
