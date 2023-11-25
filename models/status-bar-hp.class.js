@@ -1,6 +1,6 @@
 class HpBar extends StatusBar {
-    percantage = 100;
-
+    percantage = 100; 
+    
 
     IMAGES_HPBAR = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png',
@@ -15,7 +15,7 @@ class HpBar extends StatusBar {
     constructor(){
         super();
         this.loadImages(this.IMAGES_HPBAR);
-        this.setPercentage();
+        this.setPercentage(100);
     }
      /**
      * 

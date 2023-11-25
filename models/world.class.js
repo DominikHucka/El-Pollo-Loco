@@ -5,11 +5,11 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    // statusBar = new StatusBar();
     hpBar = new HpBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     throwableObjects = [];
+    // bottles = [];
 
 
     constructor(canvas, keyboard) {
@@ -29,8 +29,8 @@ class World {
 
     run() {
         setInterval(() => {
-           this.checkCollision();
-           this.checkThrowObjects();
+            this.checkCollision();
+            this.checkThrowObjects();
         }, 1000);
     }
 
@@ -49,7 +49,7 @@ class World {
         if (this.keyboard.D) {
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
-        }
+        } 
     }
 
 
@@ -59,8 +59,8 @@ class World {
         this.addObjectToMap(this.level.backgroundObjects);
         this.addObjectToMap(this.level.chickenBoss);
         this.addObjectToMap(this.throwableObjects);
+        this.addObjectToMap(this.level.bottles);
         this.ctx.translate(-this.camera_x, 0);
-        // this.addToMap(this.statusBar);
         this.addToMap(this.hpBar);
         this.addToMap(this.coinBar);
         this.addToMap(this.bottleBar);

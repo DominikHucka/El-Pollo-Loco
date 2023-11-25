@@ -3,7 +3,7 @@ class EndBoss extends MovableObject {
     height = 450;
     width = 350;
     y = 30;
-    x = 1700;
+    x = 2200;
     // x = 400;
 
     IMAGES_WALKING = [

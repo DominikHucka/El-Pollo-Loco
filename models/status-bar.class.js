@@ -1,4 +1,4 @@
-class StatusBar extends DrawableObject {   
+class StatusBar extends DrawableObject {  
     x = 5;
     y = 5;
     width = 200;
