@@ -1,6 +1,5 @@
 class HpBar extends StatusBar {
-    percantage = 100; 
-    
+   
 
     IMAGES_HPBAR = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png',
