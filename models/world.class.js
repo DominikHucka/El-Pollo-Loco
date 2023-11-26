@@ -50,35 +50,22 @@ class World {
 
     collectObjects() {
         setTimeout(() => {
-            this.level.bottles.forEach((objects) => {
+            this.level.bottles.forEach((objects, i) => {
                 if (this.character.isColliding(objects) && this.bottles.length < this.collectBottles.limitOfBottles) {
-                    this.bottles.push(new CollectBottles());  // Füge eine neue Flasche zum Array hinzu
-                    this.bottleBar.updateBottleBar(this.limitOfBottles);  // Aktualisiere die Flaschenleiste
+                    this.bottles.push(new CollectBottles()); 
+                    this.bottleBar.updateBottleBar(this.bottles.length);
+                    this.level.bottles.splice(i, 1); 
                     console.log('check my array of bottles', this.bottles);
                 }
             })
         }, 5);
     }
-    
-    // collectObjects() {
-    //     setTimeout(() => {
-    //         let collectBottles = new CollectBottles();
-    //         this.level.bottles.forEach((objects) => {
-    //             if (this.character.isColliding(objects)) {
-    //                 this.bottles.push(collectBottles);
-    //                 this.bottleBar.updateBottleBar(this.collectBottles.limitOfBottles);
-    //                 console.log('check my array of bottles', collectBottles);
-    //             }
-    //         })
-    //     }, 5);
-    // }
 
 
     checkThrowObjects() {
         if (this.keyboard.D) {
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
-
         }
     }
 
@@ -91,6 +78,7 @@ class World {
         this.addObjectToMap(this.level.chickenBoss);
         this.addObjectToMap(this.throwableObjects);
         this.addObjectToMap(this.level.bottles);
+        this.addObjectToMap(this.level.coins);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.hpBar);
         this.addToMap(this.coinBar);

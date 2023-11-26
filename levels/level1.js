@@ -57,6 +57,16 @@ const level1 = new Level(
     ],
 
 
+    [
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+    ],
+
+
 );
 
 

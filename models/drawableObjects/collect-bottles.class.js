@@ -2,7 +2,7 @@ class CollectBottles extends DrawableObject {
     y = 340
     width = 100;
     height = 100;
-    limitOfBottles = 6; 
+    limitOfBottles = 5; 
     offset = {
         bottom: 10,
         top: 10,
