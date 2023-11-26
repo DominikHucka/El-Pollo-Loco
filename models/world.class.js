@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    collectBottles = new CollectBottles();
     level = level1;
     canvas;
     ctx;
@@ -9,7 +10,7 @@ class World {
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     throwableObjects = [];
-    // bottles = [];
+    bottles = [];
 
 
     constructor(canvas, keyboard) {
@@ -19,6 +20,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.collectObjects();
     }
 
 
@@ -31,7 +33,8 @@ class World {
         setInterval(() => {
             this.checkCollision();
             this.checkThrowObjects();
-        }, 1000);
+            this.collectObjects();
+        }, 500);
     }
 
 
@@ -45,11 +48,38 @@ class World {
     }
 
 
+    collectObjects() {
+        setTimeout(() => {
+            this.level.bottles.forEach((objects) => {
+                if (this.character.isColliding(objects) && this.bottles.length < this.collectBottles.limitOfBottles) {
+                    this.bottles.push(new CollectBottles());  // Füge eine neue Flasche zum Array hinzu
+                    this.bottleBar.updateBottleBar(this.limitOfBottles);  // Aktualisiere die Flaschenleiste
+                    console.log('check my array of bottles', this.bottles);
+                }
+            })
+        }, 5);
+    }
+    
+    // collectObjects() {
+    //     setTimeout(() => {
+    //         let collectBottles = new CollectBottles();
+    //         this.level.bottles.forEach((objects) => {
+    //             if (this.character.isColliding(objects)) {
+    //                 this.bottles.push(collectBottles);
+    //                 this.bottleBar.updateBottleBar(this.collectBottles.limitOfBottles);
+    //                 console.log('check my array of bottles', collectBottles);
+    //             }
+    //         })
+    //     }, 5);
+    // }
+
+
     checkThrowObjects() {
         if (this.keyboard.D) {
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
-        } 
+
+        }
     }
 
 
@@ -57,6 +87,7 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectToMap(this.level.backgroundObjects);
+        this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.level.chickenBoss);
         this.addObjectToMap(this.throwableObjects);
         this.addObjectToMap(this.level.bottles);
