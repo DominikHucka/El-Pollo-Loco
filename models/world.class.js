@@ -1,6 +1,7 @@
 class World {
     character = new Character();
     collectBottles = new CollectBottles();
+    collectCoins = new CollectCoins();
     level = level1;
     canvas;
     ctx;
@@ -9,8 +10,10 @@ class World {
     hpBar = new HpBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
+    // statusBar = new StatusBar();
     throwableObjects = [];
-    bottles = [];
+    collectedBottles = [];
+    collectedCoins = [];
 
 
     constructor(canvas, keyboard) {
@@ -20,7 +23,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.collectObjects();
+        // this.collectObjects();
     }
 
 
@@ -50,22 +53,56 @@ class World {
 
     collectObjects() {
         setTimeout(() => {
-            this.level.bottles.forEach((objects, i) => {
-                if (this.character.isColliding(objects) && this.bottles.length < this.collectBottles.limitOfBottles) {
-                    this.bottles.push(new CollectBottles()); 
-                    this.bottleBar.updateBottleBar(this.bottles.length);
-                    this.level.bottles.splice(i, 1); 
-                    console.log('check my array of bottles', this.bottles);
-                }
-            })
+            this.collectItemBottles();
+            this.collectItemCoins(); 
         }, 5);
     }
 
 
+    collectItemBottles() {
+        this.level.bottles.forEach((objects, i) => {
+            if (this.character.isColliding(objects) && this.collectedBottles.length < this.collectBottles.limitOfBottles) {
+                this.collectedBottles.push(new CollectBottles()); 
+                this.bottleBar.updateBar(this.collectedBottles.length);
+                this.level.bottles.splice(i, 1); 
+                console.log('check my array of bottles', this.collectedBottles);
+            }
+        })
+    }
+ 
+
+    collectItemCoins() {
+        this.level.coins.forEach((o, i) => {
+            if (this.character.isColliding(o) && this.collectedCoins.length < this.collectCoins.limitOfCoins) {
+                this.collectedCoins.push(new CollectCoins()); 
+                this.coinBar.updateBar(this.collectedCoins.length);
+                this.level.coins.splice(i, 1); 
+                console.log('check my array of coins', this.collectedCoins);
+            }
+        })
+    }
+
+    // collectObjects(items, limitItems, newInstance) {
+    //     setTimeout(() => {
+    //         items.forEach((o, i) => {
+    //             if (this.character.isColliding(o) && this.collectedObjects.length < limitItems) {
+    //                 this.collectedObjects.push(newInstance); 
+    //                 this.bottleBar.updateStatusBars(this.collectedObjects.length);
+    //                 this.level.bottles.splice(i, 1); 
+    //                 console.log('check my array of bottles', this.collectedObjects);
+    //             }
+    //         })
+    //     }, 5);
+    // }
+
+
     checkThrowObjects() {
-        if (this.keyboard.D) {
+        if (this.keyboard.D && this.collectedBottles.length > 0) {
+            console.log('check how many Bottles', this.collectedBottles.length)
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            this.collectedBottles.splice(-1);
+            this.coinBar.updateBar(this.collectedBottles);
         }
     }
 

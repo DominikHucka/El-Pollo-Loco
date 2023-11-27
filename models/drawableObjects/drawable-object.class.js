@@ -6,6 +6,7 @@ class DrawableObject {
     y = 50;
     height = 150;
     width = 150;
+    // limitOfItems = 5; 
     // percantage = 100;
     /**
      * 
@@ -27,7 +28,7 @@ class DrawableObject {
      * @param {Function} ctx - draw Stroke around the Objects => its for check the Collision 
      */
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof EndBoss || this instanceof Chicken || this instanceof CollectBottles) {
+        if (this instanceof Character || this instanceof EndBoss || this instanceof Chicken || this instanceof CollectBottles || this instanceof CollectCoins) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";

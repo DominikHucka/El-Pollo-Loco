@@ -1,18 +1,20 @@
-class CollectCoins extends MovableObject {
+class CollectCoins extends DrawableObject {
     y = 340
     width = 100;
     height = 100;
+    limitOfCoins = 5; 
     offset = {
-        bottom: 10,
-        top: 10,
-        left: 40,
-        right: 20,
+        bottom: 35,
+        top: 35,
+        left: 35,
+        right: 35,
     };
 
 
     IMAGES_COINS = [
         'img/8_coin/coin_1.png',
     ]
+
 
     constructor() {
         super()
@@ -27,3 +29,5 @@ class CollectCoins extends MovableObject {
         this.img = this.imageChache[path];
     }
 }
+
+

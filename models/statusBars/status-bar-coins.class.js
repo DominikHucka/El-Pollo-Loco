@@ -14,30 +14,18 @@ class CoinBar extends StatusBar {
     constructor() {
         super();
         this.loadImages(this.IMAGES_COINBAR);
-        this.updateCoinBar(100);
+        this.updateBar();
     }
 
 
-    updateCoinBar(percantage) {
-        this.percantage = percantage;
-        let path = this.IMAGES_COINBAR[this.setAmountCoins()];
+    updateBar(amountItems) {
+        this.amountItems = amountItems;
+        let path = this.IMAGES_COINBAR[this.setAmountItems()];
         this.img = this.imageChache[path];
     }
 
 
     setAmountCoins() {
-        if (this.percentage == 100) {
-            return 5;
-        } else if (this.percentage > 80) {
-            return 4;
-        } else if (this.percentage > 60) {
-            return 3;
-        } else if (this.percentage > 40) {
-            return 2;
-        } else if (this.percentage > 20) {
-            return 1;
-        } else {
-            return 0;
-        }
+        this.setAmountItems();
     }
 }

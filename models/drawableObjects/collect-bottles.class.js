@@ -20,6 +20,7 @@ class CollectBottles extends DrawableObject {
         this.loadImages(this.IMAGES_BOTTLES);
         this.x = 500 + Math.random() * 2000;
         this.drawObjects();
+        // this.collectItems();
     }
 
 
@@ -27,5 +28,10 @@ class CollectBottles extends DrawableObject {
         let path = this.IMAGES_BOTTLES[0];
         this.img = this.imageChache[path];
     }
+
+
+    // collectItems() {
+    //     collectObjects(objects, collect, newInstance)
+    // }
 
 }
