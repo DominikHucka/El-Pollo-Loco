@@ -65,7 +65,6 @@ class World {
                 this.collectedBottles.push(new CollectBottles()); 
                 this.bottleBar.updateBar(this.collectedBottles.length);
                 this.level.bottles.splice(i, 1); 
-                console.log('check my array of bottles', this.collectedBottles);
             }
         })
     }
@@ -77,7 +76,6 @@ class World {
                 this.collectedCoins.push(new CollectCoins()); 
                 this.coinBar.updateBar(this.collectedCoins.length);
                 this.level.coins.splice(i, 1); 
-                console.log('check my array of coins', this.collectedCoins);
             }
         })
     }
@@ -98,11 +96,10 @@ class World {
 
     checkThrowObjects() {
         if (this.keyboard.D && this.collectedBottles.length > 0) {
-            console.log('check how many Bottles', this.collectedBottles.length)
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
             this.collectedBottles.splice(-1);
-            this.coinBar.updateBar(this.collectedBottles);
+            this.bottleBar.updateBar(this.collectedBottles.length);
         }
     }
 

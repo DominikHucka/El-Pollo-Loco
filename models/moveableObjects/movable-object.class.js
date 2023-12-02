@@ -14,12 +14,26 @@ class MovableObject extends DrawableObject {
 
 
     isColliding(mo) {
-        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
-        // mo.onCollisionCourse;
+        return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
     }
+
+
+    isCollidingLeft(mo) {
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left;
+    }
+
+    isCollidingTop(mo) {
+       return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
+    }
+
+    isCollidingRight(mo) {
+        return this.x + this.offset.left < mo.x + mo.width - mo.offset.right;
+    }
+
+    isCollidingBottom(mo) {
+        return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+    }
+
 
 
     applyGravity() {
