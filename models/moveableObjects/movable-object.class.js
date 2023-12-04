@@ -100,5 +100,11 @@ class MovableObject extends DrawableObject {
         timepassed = timepassed / 1000;
         return timepassed < 1;
     }
+
+
+    stopInterval() {
+        let refreshIntervalId = setInterval(fname, 10000);
+        clearInterval(refreshIntervalId);
+    }
 }
 

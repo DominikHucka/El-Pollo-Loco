@@ -2,7 +2,6 @@ class World {
     character = new Character();
     collectBottles = new CollectBottles();
     collectCoins = new CollectCoins();
-    chicken = new Chicken();
     level = level1;
     canvas;
     ctx;
@@ -41,33 +40,22 @@ class World {
         }, 500);
     }
 
+
     checkCollision() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.chicken.hit();
-                // this.hpBar.setPercentage(this.character.energy);
-                console.log('show energy Chicken', this.chicken);
+                this.character.hit();
+                this.hpBar.setPercentage(this.character.energy);
+            }else if (enemy.isCollidingTop(this.character)) {
+                enemy.hit();
+                console.log('check my Chicken', enemy);
             }
         })
     }
 
-    // checkCollision() {
-    //     this.level.enemies.forEach((enemy) => {
-    //         if (this.character.isColliding(enemy)) {
-    //             this.character.hit();
-    //             this.hpBar.setPercentage(this.character.energy);
-    //         }else if (this.character.isCollidingTop(enemy)) {
-    //             this.normalChickens.hit();
-    //             console.log('show Damage on chicken', this.normalChickens)
-    //         }
-    //     })
-    // }
-
-    
-
 
     collectObjects() {
-        setTimeout(() => {
+        setTimeout(() => {  
             this.collectItemBottles();
             this.collectItemCoins(); 
         }, 5);
