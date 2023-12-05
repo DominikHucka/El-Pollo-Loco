@@ -46,18 +46,20 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.hpBar.setPercentage(this.character.energy);
-            }else if (enemy.isCollidingTop(this.character)) {
+            }
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.hit();
-                console.log('check my Chicken', enemy);
+            } else if (enemy.energy == 0) {
+                this.character.hit(false);
             }
         })
     }
 
 
     collectObjects() {
-        setTimeout(() => {  
+        setTimeout(() => {
             this.collectItemBottles();
-            this.collectItemCoins(); 
+            this.collectItemCoins();
         }, 5);
     }
 
@@ -65,20 +67,20 @@ class World {
     collectItemBottles() {
         this.level.bottles.forEach((objects, i) => {
             if (this.character.isColliding(objects) && this.collectedBottles.length < this.collectBottles.limitOfBottles) {
-                this.collectedBottles.push(new CollectBottles()); 
+                this.collectedBottles.push(new CollectBottles());
                 this.bottleBar.updateBar(this.collectedBottles.length);
-                this.level.bottles.splice(i, 1); 
+                this.level.bottles.splice(i, 1);
             }
         })
     }
- 
+
 
     collectItemCoins() {
         this.level.coins.forEach((o, i) => {
             if (this.character.isColliding(o) && this.collectedCoins.length < this.collectCoins.limitOfCoins) {
-                this.collectedCoins.push(new CollectCoins()); 
+                this.collectedCoins.push(new CollectCoins());
                 this.coinBar.updateBar(this.collectedCoins.length);
-                this.level.coins.splice(i, 1); 
+                this.level.coins.splice(i, 1);
             }
         })
     }

@@ -14,25 +14,43 @@ class MovableObject extends DrawableObject {
 
 
     isColliding(mo) {
-        return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     }
 
-
-    isCollidingLeft(mo) {
-        return this.x + this.width - this.offset.right > mo.x + mo.offset.left;
-    }
 
     isCollidingTop(mo) {
-       return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
+        return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
     }
 
-    isCollidingRight(mo) {
-        return this.x + this.offset.left < mo.x + mo.width - mo.offset.right;
-    }
 
     isCollidingBottom(mo) {
         return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     }
+
+
+    // isColliding(mo) {
+    //     return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
+    // }
+
+
+    // isCollidingLeft(mo) {
+    //     return this.x + this.width - this.offset.right > mo.x + mo.offset.left;
+    // }
+
+    // isCollidingTop(mo) {
+    //    return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
+    // }
+
+    // isCollidingRight(mo) {
+    //     return this.x + this.offset.left < mo.x + mo.width - mo.offset.right;
+    // }
+
+    // isCollidingBottom(mo) {
+    //     return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+    // }
 
 
 
@@ -76,7 +94,7 @@ class MovableObject extends DrawableObject {
 
 
     jump() {
-        this.speedY = 20;
+        this.speedY = 25;
     }
 
 
@@ -102,9 +120,9 @@ class MovableObject extends DrawableObject {
     }
 
 
-    stopInterval() {
-        let refreshIntervalId = setInterval(fname, 10000);
-        clearInterval(refreshIntervalId);
+    /* Alternative (quick and dirty), um alle Intervalle zu beenden. */
+    clearAllIntervals() {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
 }
 
