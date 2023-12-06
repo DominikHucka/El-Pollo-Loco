@@ -37,7 +37,7 @@ class World {
             this.checkCollision();
             this.checkThrowObjects();
             this.collectObjects();
-        }, 500);
+        }, 100);
     }
 
 
@@ -47,10 +47,11 @@ class World {
                 this.character.hit();
                 this.hpBar.setPercentage(this.character.energy);
             }
+
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.hit();
-            } else if (enemy.energy == 0) {
-                this.character.hit(false);
+            } else if (enemy == 0) {
+               
             }
         })
     }
@@ -84,6 +85,7 @@ class World {
             }
         })
     }
+
 
     // collectObjects(items, limitItems, newInstance) {
     //     setTimeout(() => {

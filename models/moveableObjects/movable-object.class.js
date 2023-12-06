@@ -11,6 +11,9 @@ class MovableObject extends DrawableObject {
         right: 0,
         bottom: 0
     };
+    // intervalIds = [];
+    // i = 1;
+    handle = 0;
 
 
     isColliding(mo) {
@@ -122,7 +125,21 @@ class MovableObject extends DrawableObject {
 
     /* Alternative (quick and dirty), um alle Intervalle zu beenden. */
     clearAllIntervals() {
-        for (let i = 1; i < 9999; i++) window.clearInterval(i);
+         for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
+
+
+
+
+    setStopInterval(fn, time) {
+        let id = setInterval(fn, time);
+        this.intervalIds.push(id);
+    }
+    
+
+    stopGame() {
+        this.intervalIds.forEach(clearInterval);
+    }
+    
 }
 
