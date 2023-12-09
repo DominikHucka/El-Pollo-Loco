@@ -11,49 +11,46 @@ class MovableObject extends DrawableObject {
         right: 0,
         bottom: 0
     };
-    // intervalIds = [];
-    // i = 1;
-    handle = 0;
-
-
-    isColliding(mo) {
-        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
-    }
-
-
-    isCollidingTop(mo) {
-        return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
-    }
-
-
-    isCollidingBottom(mo) {
-        return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
-    }
-
-
+    intervalIds = [];
+    i = 1;
     // isColliding(mo) {
-    //     return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
+    //     return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+    //         this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+    //         this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+    //         this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     // }
 
-
-    // isCollidingLeft(mo) {
-    //     return this.x + this.width - this.offset.right > mo.x + mo.offset.left;
-    // }
 
     // isCollidingTop(mo) {
-    //    return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
+    //     return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
     // }
 
-    // isCollidingRight(mo) {
-    //     return this.x + this.offset.left < mo.x + mo.width - mo.offset.right;
-    // }
 
     // isCollidingBottom(mo) {
     //     return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     // }
+
+
+    isColliding(mo) {
+        return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
+    }
+
+
+    isCollidingLeft(mo) {
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left;
+    }
+
+    isCollidingTop(mo) {
+       return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
+    }
+
+    isCollidingRight(mo) {
+        return this.x + this.offset.left < mo.x + mo.width - mo.offset.right;
+    }
+
+    isCollidingBottom(mo) {
+        return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
+    }
 
 
 
@@ -127,9 +124,7 @@ class MovableObject extends DrawableObject {
     clearAllIntervals() {
          for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
-
-
-
+    
 
     setStopInterval(fn, time) {
         let id = setInterval(fn, time);
@@ -140,6 +135,7 @@ class MovableObject extends DrawableObject {
     stopGame() {
         this.intervalIds.forEach(clearInterval);
     }
+
     
 }
 

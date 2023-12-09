@@ -26,52 +26,32 @@ class Chicken extends MovableObject {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 200 + Math.random() * 500;
+        this.x = 200 + Math.random() * 1000;
         this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
     }
 
 
     animate() {
-        setInterval(() => {
-            this.moveLeft();
+        this.setStopInterval(() => {
+            this.moveObjects()
         }, 1000 / 60);
 
-
-        setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-            }else  {
-                this.playAnimation(this.IMAGES_WALKING);
-            }
+        this.setStopInterval(() => {
+           this.playAnimations()
         }, 120);
+    }
 
 
-        // setInterval(() => {
-        //     if (this.isDead()) {
-        //         this.playAnimation(this.IMAGES_DEAD);
-        //     }else if (this.moveLeft()) {
-        //         this.playAnimation(this.IMAGES_WALKING);
-        //     }
-        // }, 1000 / 60);
+    moveObjects() {
+        this.moveLeft();
+    }
 
-
-
-        // setInterval(() => {
-        //     this.playAnimation(this.IMAGES_WALKING);
-        // }, 80);
-
-
-        // setInterval(() => {
-        //     if (this.isDead()) {
-        //         this.playAnimation(this.IMAGES_DEAD);
-        //     }
-        // }, 80);
-
-
-
-        // setTimeout(() => {
-        //     this.goblinSoundEffects.play();
-        // },2000);
+    playAnimations() {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
+        } else {
+            this.playAnimation(this.IMAGES_WALKING);
+        }
     }
 }
