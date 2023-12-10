@@ -41,39 +41,42 @@ class World {
     }
 
 
-    // checkCollision() {
-    //     this.level.enemies.forEach((enemy) => {
-    //         if (this.character.isColliding(enemy)) {
-    //             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-    //                 enemy.hit();
-    //                 this.character.jump()
-    //                 this.character.energy + 5;
-    //             } else if (enemy.isDead()) {
-    //                 enemy.stopGame()
-    //             } else {
-    //                 this.character.hit();
-    //             }
-    //             this.hpBar.setPercentage(this.character.energy);
-    //         }
-    //     })
-    // }
-
-
     checkCollision() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
+                if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                    enemy.hit();
+                    this.character.jump()
+                    this.character.energy + 5;
+                } else {
+                    this.character.hit();
+                }
                 this.hpBar.setPercentage(this.character.energy);
-            } 
-            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-                enemy.hit();
-                this.character.energy + 5;
-                this.character.jump();
-            } else if (enemy.isDead()) {
+            } else if (enemy.energy == 0) {
                 enemy.stopGame();
+                enemy.disappearObject();
             }
         })
     }
+
+
+
+
+    // checkCollision() {
+    //     this.level.enemies.forEach((enemy) => {
+    //         if (this.character.isColliding(enemy)) {
+    //             this.character.hit();
+    //             this.hpBar.setPercentage(this.character.energy);
+    //         }
+    //         if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+    //             enemy.hit();
+    //             // this.character.energy + 5;
+    //             this.character.jump();
+    //         } else if (enemy.isDead()) {
+    //             enemy.stopGame();
+    //         }
+    //     })
+    // }
 
 
     collectObjects() {

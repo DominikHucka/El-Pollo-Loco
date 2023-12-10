@@ -13,23 +13,7 @@ class MovableObject extends DrawableObject {
     };
     intervalIds = [];
     i = 1;
-    // isColliding(mo) {
-    //     return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-    //         this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-    //         this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-    //         this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
-    // }
-
-
-    // isCollidingTop(mo) {
-    //     return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
-    // }
-
-
-    // isCollidingBottom(mo) {
-    //     return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
-    // }
-
+    
 
     isColliding(mo) {
         return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
@@ -60,7 +44,7 @@ class MovableObject extends DrawableObject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-        }, 1000 / 25);
+        }, 1000 / 30);
     }
 
 
@@ -68,7 +52,7 @@ class MovableObject extends DrawableObject {
         if (this instanceof ThrowableObjects) { //ThrowableObjects should allways fall 
             return true;
         } else {
-            return this.y < 200;
+            return this.y < 180;
         }
     }
 
@@ -117,6 +101,19 @@ class MovableObject extends DrawableObject {
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
         return timepassed < 1;
+    }
+
+
+    isIdle() {
+        return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
+               !this.world.keyboard.SPACE && !this.world.keyboard.D;
+    }
+    
+    
+    disappearObject() {
+        setTimeout(() => {
+            this.y = 500;
+        }, 700); 
     }
 
 
