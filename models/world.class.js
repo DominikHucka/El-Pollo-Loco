@@ -14,6 +14,7 @@ class World {
     throwableObjects = [];
     collectedBottles = [];
     collectedCoins = [];
+    throwBottle = new ThrowableObjects(); 
 
 
     constructor(canvas, keyboard) {
@@ -34,17 +35,19 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkCollision();
-            this.checkThrowObjects();
-            this.collectObjects();
-        }, 100);
+            setTimeout(() => {
+                this.checkCollision();
+                this.checkThrowObjects();
+                this.collectObjects();
+            }, 10);
+        }, 150);
     }
 
 
     checkCollision() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                if (enemy.isColliding(this.character) && this.character.isAboveGround()) {
                     enemy.hit();
                     this.character.jump()
                     this.character.energy + 5;
@@ -57,24 +60,25 @@ class World {
                 enemy.disappearObject();
             }
         })
-    }
-
-
-
+        if (this.throwBottle.isColliding(this.level.chickenBoss)) {
+            this.level.chickenBoss.hit();
+        }
+    } 
 
     // checkCollision() {
     //     this.level.enemies.forEach((enemy) => {
     //         if (this.character.isColliding(enemy)) {
     //             this.character.hit();
     //             this.hpBar.setPercentage(this.character.energy);
-    //         }
+    //         } 
     //         if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-    //             enemy.hit();
-    //             // this.character.energy + 5;
-    //             this.character.jump();
-    //         } else if (enemy.isDead()) {
-    //             enemy.stopGame();
-    //         }
+    //                 enemy.hit();
+    //                 this.character.jump()
+    //                 this.character.energy += 5;
+    //             }  else if (enemy.energy == 0) {
+    //                 enemy.stopGame();
+    //                 enemy.disappearObject();
+    //             }     
     //     })
     // }
 

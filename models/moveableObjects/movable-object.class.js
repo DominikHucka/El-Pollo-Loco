@@ -13,7 +13,7 @@ class MovableObject extends DrawableObject {
     };
     intervalIds = [];
     i = 1;
-    
+
 
     isColliding(mo) {
         return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
@@ -25,7 +25,7 @@ class MovableObject extends DrawableObject {
     }
 
     isCollidingTop(mo) {
-       return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
+        return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
     }
 
     isCollidingRight(mo) {
@@ -104,35 +104,48 @@ class MovableObject extends DrawableObject {
     }
 
 
+    idle() {
+        let timepassed = new Date().getTime();
+        timepassed = timepassed / 1000;
+        return timepassed < 5;
+    }
+
+
     isIdle() {
         return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
-               !this.world.keyboard.SPACE && !this.world.keyboard.D;
+            !this.world.keyboard.SPACE && !this.world.keyboard.D;
     }
-    
-    
+
+    longIdle() {
+        return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
+            !this.world.keyboard.SPACE && !this.world.keyboard.D &&
+            this.idle();
+    }
+
+
     disappearObject() {
         setTimeout(() => {
             this.y = 500;
-        }, 700); 
+        }, 700);
     }
 
 
     /* Alternative (quick and dirty), um alle Intervalle zu beenden. */
     clearAllIntervals() {
-         for (let i = 1; i < 9999; i++) window.clearInterval(i);
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
-    
+
 
     setStopInterval(fn, time) {
         let id = setInterval(fn, time);
         this.intervalIds.push(id);
     }
-    
+
 
     stopGame() {
         this.intervalIds.forEach(clearInterval);
     }
 
-    
+
 }
 
