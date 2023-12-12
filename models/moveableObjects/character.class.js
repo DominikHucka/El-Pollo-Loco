@@ -2,7 +2,7 @@ class Character extends MovableObject {
     speed = 6;
     width = 150;
     height = 250;
-    y = 200;
+    y = 180;
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -124,6 +124,6 @@ class Character extends MovableObject {
             } else if (this.longIdle()) {
                 this.playAnimation(this.IMAGES_LONGIDLE);
             }
-        }, 80);
+        }, 100);
     }
 }

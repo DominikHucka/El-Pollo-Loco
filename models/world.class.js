@@ -14,7 +14,8 @@ class World {
     throwableObjects = [];
     collectedBottles = [];
     collectedCoins = [];
-    throwBottle = new ThrowableObjects(); 
+    endBoss = new EndBoss();
+
 
 
     constructor(canvas, keyboard) {
@@ -48,11 +49,11 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (enemy.isColliding(this.character) && this.character.isAboveGround()) {
-                    enemy.hit();
+                    enemy.hit(100);
                     this.character.jump()
                     this.character.energy + 5;
                 } else {
-                    this.character.hit();
+                    this.character.hit(5);
                 }
                 this.hpBar.setPercentage(this.character.energy);
             } else if (enemy.energy == 0) {
@@ -60,10 +61,18 @@ class World {
                 enemy.disappearObject();
             }
         })
-        if (this.throwBottle.isColliding(this.level.chickenBoss)) {
-            this.level.chickenBoss.hit();
+        if (this.character.isColliding(this.endBoss)) {
+            this.character.hit(50);
+            this.hpBar.setPercentage(this.character.energy);
+
         }
-    } 
+        this.throwableObjects.forEach((thrownObject) => {
+            if (thrownObject.isColliding(this.endBoss)) {
+                this.endBoss.hit(1);
+                console.log('hit me', this.endBoss);
+            }
+        });
+    }
 
     // checkCollision() {
     //     this.level.enemies.forEach((enemy) => {

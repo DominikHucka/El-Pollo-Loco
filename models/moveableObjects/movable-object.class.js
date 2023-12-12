@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
     acceleration = 2;
     energy = 100;
     lastHit = 0;
+    lastAction = 0;
     offset = {
         left: 0,
         top: 0,
@@ -35,7 +36,6 @@ class MovableObject extends DrawableObject {
     isCollidingBottom(mo) {
         return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     }
-
 
 
     applyGravity() {
@@ -87,13 +87,18 @@ class MovableObject extends DrawableObject {
     }
 
 
-    hit() {
-        this.energy -= 5;
+    hit(hitbox) {
+        this.energy -= hitbox;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();
         }
+    }
+
+
+    action() {
+        this.lastAction = new Date().getTime();
     }
 
 
@@ -105,9 +110,9 @@ class MovableObject extends DrawableObject {
 
 
     idle() {
-        let timepassed = new Date().getTime();
+        let timepassed = new Date().getTime() - this.lastAction;
         timepassed = timepassed / 1000;
-        return timepassed < 5;
+        return timepassed > 2;
     }
 
 
@@ -116,11 +121,23 @@ class MovableObject extends DrawableObject {
             !this.world.keyboard.SPACE && !this.world.keyboard.D;
     }
 
+
     longIdle() {
         return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
             !this.world.keyboard.SPACE && !this.world.keyboard.D &&
             this.idle();
     }
+    
+    // longIdle() {
+    //     let isLongIdle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
+    //         !this.world.keyboard.SPACE && !this.world.keyboard.D &&
+    //         this.isIdle() && this.idle();
+        
+    //     console.log('longIdle', isLongIdle);
+        
+    //     return isLongIdle;
+    // }
+    
 
 
     disappearObject() {

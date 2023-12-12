@@ -25,10 +25,10 @@ class DrawableObject {
     }
     /**
      * 
-     * @param {Function} ctx - draw Stroke around the Objects => its for check the Collision 
+     * @param {Function} ctx - draw Stroke around the Objects => check the Collision 
      */
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof EndBoss) {
+        if (this instanceof Character || this instanceof EndBoss || this instanceof ThrowableObjects) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";

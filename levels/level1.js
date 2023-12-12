@@ -4,7 +4,8 @@ const level1 = new Level(
     [
         new Chicken(),
         new Chicken(),
-        new Chicken(),
+        // new Chicken(),
+        // new Chicken(),
     ],
 
    
@@ -42,31 +43,29 @@ const level1 = new Level(
     
 
     [
+        new CollectBottles(),
+        new CollectBottles(),
+        new CollectBottles(),
+        new CollectBottles(),
+        new CollectBottles(),
+        new CollectBottles(),
+        new CollectBottles(),
+    ],
+
+
+    [
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+        new CollectCoins(),
+    ],
+
+    
+    [
         new EndBoss(),
     ],
-
-
-    [
-        new CollectBottles(),
-        new CollectBottles(),
-        new CollectBottles(),
-        new CollectBottles(),
-        new CollectBottles(),
-        new CollectBottles(),
-        new CollectBottles(),
-    ],
-
-
-    [
-        new CollectCoins(),
-        new CollectCoins(),
-        new CollectCoins(),
-        new CollectCoins(),
-        new CollectCoins(),
-        new CollectCoins(),
-    ],
-
-
 );
 
 
