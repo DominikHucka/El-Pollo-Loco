@@ -1,7 +1,6 @@
 class Level {
     enemies;
     backgroundObjects;
-    chickenBoss;
     bottles;
     level_end_x = 2800;
     clouds;
@@ -9,13 +8,12 @@ class Level {
     // level1_backgroundEffect = new Audio('audio/levels/dark_cavern_ambient_001.ogg');
 
 
-    constructor(enemies, clouds, backgroundObjects, bottles, coins, chickenBoss) {
+    constructor(enemies, clouds, backgroundObjects, bottles, coins) {
         this.enemies = enemies;
         this.backgroundObjects = backgroundObjects;        
         this.bottles = bottles;
         this.clouds = clouds;
         this.coins = coins;
-        this.chickenBoss = chickenBoss;
         // this.playBackgroundEffects();
     }
 

@@ -2,12 +2,12 @@ class EndBoss extends MovableObject {
 
     height = 450;
     width = 350;
-    y = 30;
+    y = 20;
     x = 2700;
-    // x = 1000;
+    // x = 400;
     offset = {
-        left: 5,
-        top: 65,
+        left: 40 ,
+        top: 100,
         right: 5,
         bottom: 15
     };
@@ -48,8 +48,10 @@ class EndBoss extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+
               } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+
               } else {
                 this.playAnimation(this.IMAGES_WALKING);
               }

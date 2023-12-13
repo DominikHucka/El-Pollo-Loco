@@ -63,9 +63,9 @@ const level1 = new Level(
     ],
 
     
-    [
-        new EndBoss(),
-    ],
+    // [
+    //     new EndBoss(),
+    // ],
 );
 
 

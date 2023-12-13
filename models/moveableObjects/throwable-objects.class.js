@@ -1,5 +1,5 @@
 class ThrowableObjects extends MovableObject {
-
+    
 
     IMAGES_THROWBOTTLE = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -22,20 +22,35 @@ class ThrowableObjects extends MovableObject {
     constructor(x, y) {
         super().loadImage(this.IMAGES_THROWBOTTLE[0]);
         this.loadImages(this.IMAGES_THROWBOTTLE);
+        this.loadImages(this.IMAGES_SPLASH);
         this.x = x;
         this.y = y;
         this.height = 50;
         this.width = 50;
-        this.throw();
+        this.animate();
+        this.energy = 1;
+        this.hitBoss = false;
+        // this.speedY = 2;
+        this.hitGround = false;
+    }
+
+
+    animate() {
+        this.speedY = 30;
+        this.applyGravity();
+        this.setStopInterval(() => {
+            this.throw();
+            this.x += 2.5;
+        }, 500 / 60);
+       
     }
 
 
     throw() {
-        this.speedY = 30;
-        this.applyGravity();
-        setInterval(() => {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_SPLASH);
+        } else {
             this.playAnimation(this.IMAGES_THROWBOTTLE);
-            this.x += 2.5;
-        }, 500 / 60);
+        }
     }
 }   

@@ -18,6 +18,7 @@ class World {
 
 
 
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -37,15 +38,17 @@ class World {
     run() {
         setInterval(() => {
             setTimeout(() => {
-                this.checkCollision();
+                this.checkCollisionChickens();
                 this.checkThrowObjects();
                 this.collectObjects();
+                this.checkCollisionEndboss();
+                this.checkCollisionBottles();
             }, 10);
         }, 150);
     }
 
 
-    checkCollision() {
+    checkCollisionChickens() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (enemy.isColliding(this.character) && this.character.isAboveGround()) {
@@ -57,22 +60,55 @@ class World {
                 }
                 this.hpBar.setPercentage(this.character.energy);
             } else if (enemy.energy == 0) {
-                enemy.stopGame();
+                enemy.stopInterval();
                 enemy.disappearObject();
             }
         })
+    }
+
+
+    checkCollisionEndboss() {
         if (this.character.isColliding(this.endBoss)) {
             this.character.hit(50);
             this.hpBar.setPercentage(this.character.energy);
-
         }
-        this.throwableObjects.forEach((thrownObject) => {
-            if (thrownObject.isColliding(this.endBoss)) {
-                this.endBoss.hit(1);
+        this.throwableObjects.forEach((throwObject) => {
+            if (!throwObject.hitBoss && throwObject.isColliding(this.endBoss)) {
                 console.log('hit me', this.endBoss);
+                this.endBoss.hit(20);
+                throwObject.hitBoss = true;
             }
         });
     }
+
+
+    checkCollisionBottles() {
+        this.throwableObjects.forEach((bottle) => {
+            if (this.endBoss.isColliding(bottle)) {
+                bottle.hit(1);
+            }
+            if (bottle.y + bottle.height > this.y && bottle.speedY > 800) {
+                bottle.hit(1);
+                bottle.hitGround = true;
+            }
+        });
+    }
+
+
+    isCollidingWithGround() {
+        
+    }
+    // if (this.character.isColliding(this.level.chickenBoss)) {
+    //     this.character.hit(50);
+    //     this.hpBar.setPercentage(this.character.energy);
+
+    // }
+    // this.throwableObjects.forEach((thrownObject) => {
+    //     if (thrownObject.isColliding(this.level.chickenBoss)) {
+    //         this.level.chickenBoss.hit(1);
+    //         console.log('hit me', this.endBoss);
+    //     }
+    // });
 
     // checkCollision() {
     //     this.level.enemies.forEach((enemy) => {
@@ -151,7 +187,7 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectToMap(this.level.backgroundObjects);
         this.addObjectToMap(this.level.clouds);
-        this.addObjectToMap(this.level.chickenBoss);
+        this.addToMap(this.endBoss);
         this.addObjectToMap(this.throwableObjects);
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.coins);

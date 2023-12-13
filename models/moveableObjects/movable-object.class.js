@@ -44,6 +44,9 @@ class MovableObject extends DrawableObject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
+            if (this.y >= 180 && this instanceof Character) {
+                this.y = 180;
+            }
         }, 1000 / 30);
     }
 
@@ -87,18 +90,13 @@ class MovableObject extends DrawableObject {
     }
 
 
-    hit(hitbox) {
+     hit(hitbox) {
         this.energy -= hitbox;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();
         }
-    }
-
-
-    action() {
-        this.lastAction = new Date().getTime();
     }
 
 
@@ -109,16 +107,20 @@ class MovableObject extends DrawableObject {
     }
 
 
-    idle() {
-        let timepassed = new Date().getTime() - this.lastAction;
-        timepassed = timepassed / 1000;
-        return timepassed > 2;
-    }
-
-
     isIdle() {
         return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
             !this.world.keyboard.SPACE && !this.world.keyboard.D;
+    }
+
+
+    action() {
+        this.lastAction = new Date().getTime();
+    }
+
+
+    idle() {
+        let timepassed = (new Date().getTime() - this.lastAction) / 1000;
+        return timepassed;
     }
 
 
@@ -159,7 +161,7 @@ class MovableObject extends DrawableObject {
     }
 
 
-    stopGame() {
+    stopInterval() {
         this.intervalIds.forEach(clearInterval);
     }
 

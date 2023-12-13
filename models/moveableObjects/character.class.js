@@ -121,8 +121,9 @@ class Character extends MovableObject {
             } else if (this.isIdle()) {
                 this.playAnimation(this.IMAGES_IDLE);
 
-            } else if (this.longIdle()) {
+            } else if (this.longIdle() > 2) {
                 this.playAnimation(this.IMAGES_LONGIDLE);
+                console.log('idle', this.longIdle())
             }
         }, 100);
     }
