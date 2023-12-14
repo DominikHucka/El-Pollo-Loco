@@ -78,6 +78,9 @@ class World {
                 this.endBoss.hit(20);
                 throwObject.hitBoss = true;
             }
+            if (this.endBoss.energy == 0) {
+                
+            }
         });
     }
 
@@ -87,7 +90,7 @@ class World {
             if (this.endBoss.isColliding(bottle)) {
                 bottle.hit(1);
             }
-            if (bottle.y + bottle.height > this.y && bottle.speedY > 800) {
+            if (this.y.isColliding(bottle)) {
                 bottle.hit(1);
                 bottle.hitGround = true;
             }
@@ -96,7 +99,7 @@ class World {
 
 
     isCollidingWithGround() {
-        
+
     }
     // if (this.character.isColliding(this.level.chickenBoss)) {
     //     this.character.hit(50);

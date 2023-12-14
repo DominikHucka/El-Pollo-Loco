@@ -1,4 +1,5 @@
 class MovableObject extends DrawableObject {
+    cooldown = false;
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -66,7 +67,7 @@ class MovableObject extends DrawableObject {
         this.img = this.imageChache[path];
         this.currentImage++;
     }
-
+    
 
     moveRight() {
         this.x += this.speed;
@@ -90,7 +91,7 @@ class MovableObject extends DrawableObject {
     }
 
 
-     hit(hitbox) {
+    hit(hitbox) {
         this.energy -= hitbox;
         if (this.energy < 0) {
             this.energy = 0;
@@ -129,17 +130,17 @@ class MovableObject extends DrawableObject {
             !this.world.keyboard.SPACE && !this.world.keyboard.D &&
             this.idle();
     }
-    
+
     // longIdle() {
     //     let isLongIdle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
     //         !this.world.keyboard.SPACE && !this.world.keyboard.D &&
     //         this.isIdle() && this.idle();
-        
+
     //     console.log('longIdle', isLongIdle);
-        
+
     //     return isLongIdle;
     // }
-    
+
 
 
     disappearObject() {
