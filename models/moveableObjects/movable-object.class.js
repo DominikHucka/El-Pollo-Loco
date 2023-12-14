@@ -67,7 +67,7 @@ class MovableObject extends DrawableObject {
         this.img = this.imageChache[path];
         this.currentImage++;
     }
-    
+
 
     moveRight() {
         this.x += this.speed;
@@ -121,7 +121,7 @@ class MovableObject extends DrawableObject {
 
     idle() {
         let timepassed = (new Date().getTime() - this.lastAction) / 1000;
-        return timepassed;
+        return timepassed < 1;
     }
 
 

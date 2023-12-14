@@ -62,6 +62,7 @@ class Character extends MovableObject {
     ]; 
     world;
     walking_sound = new Audio('audio/walking_character/step_cloth1.mp3');
+    jump_sound = new Audio('audio/walking_character/jumppp22.ogg');
     offset = {
         bottom: 10,
         top: 90,
@@ -97,10 +98,10 @@ class Character extends MovableObject {
             }
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
+                this.jump_sound.play();
             }
-            // if (this.world.keyboard.DOWN) {
-            //     this.y += this.speed;
-            // }
+           
+
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
@@ -121,9 +122,11 @@ class Character extends MovableObject {
             } else if (this.isIdle()) {
                 this.playAnimation(this.IMAGES_IDLE);
 
-            } else if (this.longIdle() > 2) {
+            } else if (this.longIdle()) {
+                console.log('Entering longIdle state');
                 this.playAnimation(this.IMAGES_LONGIDLE);
-                console.log('idle', this.longIdle())
+                console.log('idle', this.longIdle());
+                
             }
         }, 100);
     }

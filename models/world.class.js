@@ -15,6 +15,9 @@ class World {
     collectedBottles = [];
     collectedCoins = [];
     endBoss = new EndBoss();
+    collect_sound = new Audio('audio/levels/collect.wav');
+    coin_sound = new Audio('audio/levels/coin (1).flac');
+   
 
 
 
@@ -26,6 +29,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        
         // this.collectObjects();
     }
 
@@ -90,11 +94,11 @@ class World {
             if (this.endBoss.isColliding(bottle)) {
                 bottle.hit(1);
             }
-            if (this.y.isColliding(bottle)) {
-                bottle.hit(1);
-                bottle.hitGround = true;
-            }
-        });
+           
+        }); // if (this.y.isColliding(bottle)) {
+            //     bottle.hit(1);
+            //     bottle.hitGround = true;
+            // }
     }
 
 
@@ -145,6 +149,7 @@ class World {
                 this.collectedBottles.push(new CollectBottles());
                 this.bottleBar.updateBar(this.collectedBottles.length);
                 this.level.bottles.splice(i, 1);
+                this.collect_sound.play();
             }
         })
     }
@@ -156,6 +161,8 @@ class World {
                 this.collectedCoins.push(new CollectCoins());
                 this.coinBar.updateBar(this.collectedCoins.length);
                 this.level.coins.splice(i, 1);
+                this.coin_sound.play();
+                this.coin_sound.volume = 0.1;
             }
         })
     }

@@ -10,6 +10,8 @@ class Chicken extends MovableObject {
         right: 0,
         bottom: 0
     };
+    chicken_dead_sound = new Audio('audio/enemies/chicken_dead.mp3');
+    chicken_sound_volume = 0.5;
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
@@ -51,6 +53,8 @@ class Chicken extends MovableObject {
     playAnimations() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
+            this.chicken_dead_sound.play();
+            this.chicken_dead_sound.playbackRate = 1.5;
         } else {
             this.playAnimation(this.IMAGES_WALKING);
         }
