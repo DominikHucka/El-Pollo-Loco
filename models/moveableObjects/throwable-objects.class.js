@@ -49,8 +49,11 @@ class ThrowableObjects extends MovableObject {
     throw() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_SPLASH);
+            // playSound(smashBottle);
+            // stopSound(smashBottle);
         } else {
             this.playAnimation(this.IMAGES_THROWBOTTLE);
+            // playSound(rotationBottle, 0.5, 1.6);
         }
     }
 }   

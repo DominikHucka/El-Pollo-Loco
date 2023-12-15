@@ -6,6 +6,7 @@ class DrawableObject {
     y = 50;
     height = 150;
     width = 150;
+    drawImages = new DrawImages();
     // limitOfItems = 5; 
     // percantage = 100;
     /**

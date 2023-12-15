@@ -167,5 +167,11 @@ class MovableObject extends DrawableObject {
     }
 
 
+    startFight() {
+        if (this.y == 2420) {
+            this.y = 2420;
+           console.log('start', this.startFight);
+        }
+    }
 }
 
