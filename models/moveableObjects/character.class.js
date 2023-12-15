@@ -4,10 +4,8 @@ class Character extends MovableObject {
     height = 250;
     y = 180;
 
-   
+
     world;
-    // walking_sound = new Audio('audio/walking_character/step_cloth1.mp3');
-    // jump_sound = new Audio('audio/walking_character/jumppp22.ogg');
     offset = {
         bottom: 10,
         top: 90,
@@ -45,7 +43,7 @@ class Character extends MovableObject {
                 this.jump();
                 playSound(jumpCharacter);
             }
-           
+
 
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
@@ -65,15 +63,23 @@ class Character extends MovableObject {
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation(this.drawImages.CHARACTER_WALKING);
 
-            } else if (this.isIdle()) {
-                this.playAnimation(this.drawImages.CHARACTER_IDLE);
-
             } else if (this.longIdle()) {
-                console.log('Entering longIdle state');
                 this.playAnimation(this.drawImages.CHARACTER_LONGIDLE);
-                console.log('idle', this.longIdle());
-                
+                console.log('Longidle', this.longIdle());
+            } else {
+                this.playAnimation(this.drawImages.CHARACTER_IDLE);
+                console.log('Idle', this.isIdle());
             }
+
+            // else if (this.isIdle()) {
+            //     this.playAnimation(this.drawImages.CHARACTER_IDLE);
+            //     console.log('idle', this.isIdle());
+            // }
+            // if (this.longIdle()) {
+            //     this.playAnimation(this.drawImages.CHARACTER_LONGIDLE);
+            //     console.log('Longidle', this.longIdle());
+            // }
+
         }, 100);
     }
 }

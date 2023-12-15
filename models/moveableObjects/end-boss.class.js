@@ -1,5 +1,4 @@
 class EndBoss extends MovableObject {
-
     height = 450;
     width = 350;
     y = 20;
@@ -30,9 +29,9 @@ class EndBoss extends MovableObject {
               } else if (this.isHurt()) {
                 this.playAnimation(this.drawImages.ENDBOSS_HURT);
 
-              } else if (this.startFight() && this.moveLeft()){
-                this.playAnimation(this.drawImages.ENDBOSS_WALKING);
+            //   } else if (this.startFight() && this.moveLeft()){
+            //     this.playAnimation(this.drawImages.ENDBOSS_WALKING);
               }
         }, 200);
     }
-}
+} 

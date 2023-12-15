@@ -109,39 +109,41 @@ class MovableObject extends DrawableObject {
 
 
     isIdle() {
-        return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
+        let idle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
             !this.world.keyboard.SPACE && !this.world.keyboard.D;
+        if (idle) {
+            this.lastAction = new Date().getTime() / 1000;
+        }
+        return idle;
     }
-
-
-    action() {
-        this.lastAction = new Date().getTime();
-    }
-
-
-    idle() {
-        let timepassed = (new Date().getTime() - this.lastAction) / 1000;
-        return timepassed < 1;
-    }
-
 
     longIdle() {
-        return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
-            !this.world.keyboard.SPACE && !this.world.keyboard.D &&
-            this.idle();
+        let currentTime = new Date().getTime() / 1000; 
+        let timeSinceLastAction = currentTime - this.lastAction;
+        return timeSinceLastAction > 5;
     }
-
-    // longIdle() {
-    //     let isLongIdle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
-    //         !this.world.keyboard.SPACE && !this.world.keyboard.D &&
-    //         this.isIdle() && this.idle();
-
-    //     console.log('longIdle', isLongIdle);
-
-    //     return isLongIdle;
+    // isIdle() {
+    //     let idle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
+    //         !this.world.keyboard.SPACE && !this.world.keyboard.D;
+    //     if (idle) {
+    //         this.lastAction = new Date().getTime() / 1000;
+    //     }
+    //     return idle;
+    // }
+    // isIdle() {
+    //     return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
+    //         !this.world.keyboard.SPACE && !this.world.keyboard.D;
     // }
 
 
+    // longIdle() {
+    //     if (this.isIdle()) {
+    //         let currentTime = new Date().getTime() / 1000; 
+    //         let timeSinceLastAction = currentTime - this.lastAction;
+    //         return timeSinceLastAction > 5;
+    //     }
+    // }
+    
 
     disappearObject() {
         setTimeout(() => {
@@ -150,7 +152,6 @@ class MovableObject extends DrawableObject {
     }
 
 
-    /* Alternative (quick and dirty), um alle Intervalle zu beenden. */
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
@@ -166,12 +167,5 @@ class MovableObject extends DrawableObject {
         this.intervalIds.forEach(clearInterval);
     }
 
-
-    startFight() {
-        if (this.y == 2420) {
-            this.y = 2420;
-           console.log('start', this.startFight);
-        }
-    }
 }
 
