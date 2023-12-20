@@ -10,8 +10,6 @@ class Chicken extends MovableObject {
         bottom: 0
     };
     
-    chicken_sound_volume = 0.5;
-   
 
     constructor() {
         super().loadImage(this.drawImages.CHICKEN_WALKING[0]);

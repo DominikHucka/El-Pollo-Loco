@@ -14,7 +14,6 @@ const collectCoin = coin_sound = new Audio('audio/levels/coin (1).flac');
 //THROW ITEMS
 const smashBottle = smashBottle_sound = new Audio('audio/levels/smash_bottle.mp3');
 const rotationBottle = rotationBottle_sound = new Audio('audio/levels/bottle_rotate.mp3');
-
 /**
  * Plays a sound with customizable volume and playback rate.
  *
