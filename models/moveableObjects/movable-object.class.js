@@ -6,7 +6,6 @@ class MovableObject extends DrawableObject {
     acceleration = 2;
     energy = 100;
     lastHit = 0;
-    lastAction = 0;
     offset = {
         left: 0,
         top: 0,
@@ -109,41 +108,14 @@ class MovableObject extends DrawableObject {
 
 
     isIdle() {
-        let idle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
-            !this.world.keyboard.SPACE && !this.world.keyboard.D;
-        if (idle) {
-            this.lastAction = new Date().getTime() / 1000;
-        }
-        return idle;
+        return (
+            this.world.keyboard.RIGHT === false &&
+            this.world.keyboard.LEFT === false &&
+            this.world.keyboard.SPACE === false &&
+            this.world.keyboard.D === false
+        );
     }
 
-    longIdle() {
-        let currentTime = new Date().getTime() / 1000; 
-        let timeSinceLastAction = currentTime - this.lastAction;
-        return timeSinceLastAction > 5;
-    }
-    // isIdle() {
-    //     let idle = !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
-    //         !this.world.keyboard.SPACE && !this.world.keyboard.D;
-    //     if (idle) {
-    //         this.lastAction = new Date().getTime() / 1000;
-    //     }
-    //     return idle;
-    // }
-    // isIdle() {
-    //     return !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT &&
-    //         !this.world.keyboard.SPACE && !this.world.keyboard.D;
-    // }
-
-
-    // longIdle() {
-    //     if (this.isIdle()) {
-    //         let currentTime = new Date().getTime() / 1000; 
-    //         let timeSinceLastAction = currentTime - this.lastAction;
-    //         return timeSinceLastAction > 5;
-    //     }
-    // }
-    
 
     disappearObject() {
         setTimeout(() => {

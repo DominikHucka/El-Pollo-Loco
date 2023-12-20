@@ -3,8 +3,7 @@ class Character extends MovableObject {
     width = 150;
     height = 250;
     y = 180;
-
-
+    counterLongidle = 0;
     world;
     offset = {
         bottom: 10,
@@ -44,8 +43,18 @@ class Character extends MovableObject {
                 playSound(jumpCharacter);
             }
 
+            if (
+                this.world.keyboard.RIGHT ||
+                this.world.keyboard.LEFT ||
+                this.world.keyboard.SPACE ||
+                this.world.keyboard.D ||
+                this.isHurt()
+            ) {
+                this.counterLongidle = 0;
+            }
 
             this.world.camera_x = -this.x + 100;
+            
         }, 1000 / 60);
 
 
@@ -63,23 +72,27 @@ class Character extends MovableObject {
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation(this.drawImages.CHARACTER_WALKING);
 
-            } else if (this.longIdle()) {
-                this.playAnimation(this.drawImages.CHARACTER_LONGIDLE);
-                console.log('Longidle', this.longIdle());
-            } else {
+            } else if (this.isIdle()) {
                 this.playAnimation(this.drawImages.CHARACTER_IDLE);
-                console.log('Idle', this.isIdle());
+
+            } else {
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    this.playAnimation(this.drawImages.CHARACTER_WALKING);
+                }
             }
 
-            // else if (this.isIdle()) {
-            //     this.playAnimation(this.drawImages.CHARACTER_IDLE);
-            //     console.log('idle', this.isIdle());
-            // }
-            // if (this.longIdle()) {
-            //     this.playAnimation(this.drawImages.CHARACTER_LONGIDLE);
-            //     console.log('Longidle', this.longIdle());
-            // }
+            if (this.isIdle()) {
+                this.counterLongidle++;
 
+            } else {
+                this.counterLongidle = 0;   // Reset des Counter, wenn eine Taste gedrückt wird
+            }
+        }, 100);
+
+        setInterval(() => {
+            if (this.counterLongidle > 40) { //Überprüfe, ob der Counter größer als 40 ist
+                this.playAnimation(this.drawImages.CHARACTER_LONGIDLE);
+            }
         }, 100);
     }
 }

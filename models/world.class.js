@@ -14,6 +14,7 @@ class World {
     collectedBottles = [];
     collectedCoins = [];
     endBoss = new EndBoss();
+    backgroundObject = new BackgroundObject();
     
 
     constructor(canvas, keyboard) {
@@ -70,7 +71,6 @@ class World {
         }
         this.throwableObjects.forEach((throwObject) => {
             if (!throwObject.hitBoss && throwObject.isColliding(this.endBoss)) {
-                console.log('hit me', this.endBoss);
                 this.endBoss.hit(10);
                 throwObject.hitBoss = true;
             }
@@ -85,8 +85,12 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             if (this.endBoss.isColliding(bottle)) {
                 bottle.hit(1);
-            }
+            } 
 
+            if (this.backgroundObject.isColliding(bottle)) {
+                this.hitGround = true;
+                bottle.hit(1);
+            }
         }); 
     }
 

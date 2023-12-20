@@ -29,7 +29,7 @@ class DrawableObject {
      * @param {Function} ctx - draw Stroke around the Objects => check the Collision 
      */
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof EndBoss || this instanceof ThrowableObjects) {
+        if (this instanceof EndBoss || this instanceof ThrowableObjects || this instanceof BackgroundObject) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";
@@ -38,9 +38,9 @@ class DrawableObject {
         }
     }
     /**
-  * 
-  * @param {Array} arr - ['img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png','img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk2.png', .....] 
-  */
+     * 
+    * @param {Array} arr - ['img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png','img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk2.png', .....] 
+    */
     loadImages(arr) {
         arr.forEach(path => {
             let img = new Image();
