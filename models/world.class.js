@@ -40,8 +40,20 @@ class World {
                 this.collectObjects();
                 this.checkCollisionEndboss();
                 this.checkCollisionBottles();
+                this.startEndbossFight();
             }, 10);
         }, 150);
+    }
+
+
+    startEndbossFight() {
+        if (this.character.isSpotted() && !this.startMove) {
+            console.log('START FIGHT', this.character.isSpotted())
+            this.endBoss.moveLeft();
+           
+        } else {
+            this.endBoss.startMove = false;
+        }
     }
 
 

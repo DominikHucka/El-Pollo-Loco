@@ -14,6 +14,7 @@ class MovableObject extends DrawableObject {
     };
     intervalIds = [];
     i = 1;
+    startMove = false;
 
 
     isColliding(mo) {
@@ -70,13 +71,11 @@ class MovableObject extends DrawableObject {
 
     moveRight() {
         this.x += this.speed;
-        // this.otherDirection = false;
     }
 
 
     moveLeft() {
         this.x -= this.speed;
-        // this.otherDirection = true;
     }
 
 
@@ -87,6 +86,11 @@ class MovableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
+    }
+
+
+    spawnEndboss() {
+       return this.x = 2400;
     }
 
 
@@ -114,6 +118,11 @@ class MovableObject extends DrawableObject {
             this.world.keyboard.SPACE === false &&
             this.world.keyboard.D === false
         );
+    }
+
+
+    isSpotted() {
+       return this.x > 2400;
     }
 
 

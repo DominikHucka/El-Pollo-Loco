@@ -73,7 +73,7 @@ class DrawImages {
         'img/2_character_pepe/1_idle/idle/I-10.png',
     ];
     /**
-     * Array of image paths representing Long Idle < 3 Seconds animation frames for the character. +
+     * Array of image paths representing Long Idle < 4 Seconds animation frames for the character. +
      * 
      * @type {string[]}
      * @param {string} CHARACTER_LONGIDLE - Paths to long idel animation frames, longer than 3 seconds.
@@ -121,31 +121,36 @@ class DrawImages {
         'img/4_enemie_boss_chicken/1_walk/G2.png',
         'img/4_enemie_boss_chicken/1_walk/G3.png',
         'img/4_enemie_boss_chicken/1_walk/G4.png',
-     ];
+    ];
+    /**
+    * Array of image paths representing dead animation frames for the ENDBOSS
+    * 
+    * @type {string[]}
+    * @param {string} ENDBOSS_DEAD - Paths to dead animation frames
+    */
+    ENDBOSS_DEAD = [
+        'img/4_enemie_boss_chicken/5_dead/G24.png',
+        'img/4_enemie_boss_chicken/5_dead/G25.png',
+        'img/4_enemie_boss_chicken/5_dead/G26.png',
+    ];
+    /**
+    * Array of image paths representing dead animation frames for the ENDBOSS
+    * 
+    * @type {string[]}
+    * @param {string} ENDBOSS_HURT - Paths to hurt animation frames
+    */
+    ENDBOSS_HURT = [
+        'img/4_enemie_boss_chicken/4_hurt/G21.png',
+        'img/4_enemie_boss_chicken/4_hurt/G22.png',
+        'img/4_enemie_boss_chicken/4_hurt/G23.png',
+    ];
      /**
-     * Array of image paths representing dead animation frames for the ENDBOSS
-     * 
-     * @type {string[]}
-     * @param {string} ENDBOSS_DEAD - Paths to dead animation frames
-     */
-     ENDBOSS_DEAD = [
-         'img/4_enemie_boss_chicken/5_dead/G24.png',
-         'img/4_enemie_boss_chicken/5_dead/G25.png',
-         'img/4_enemie_boss_chicken/5_dead/G26.png',
-     ];
-     /**
-     * Array of image paths representing dead animation frames for the ENDBOSS
-     * 
-     * @type {string[]}
-     * @param {string} ENDBOSS_HURT - Paths to hurt animation frames
-     */
-     ENDBOSS_HURT = [
-         'img/4_enemie_boss_chicken/4_hurt/G21.png',
-         'img/4_enemie_boss_chicken/4_hurt/G22.png',
-         'img/4_enemie_boss_chicken/4_hurt/G23.png',
-     ];
-
-     ENDBOSS_ALERT = [
+    * Array of image paths representing alert animation frames for the ENDBOSS
+    * 
+    * @type {string[]}
+    * @param {string} ENDBOSS_ALERT - Paths to alert animation frames
+    */
+    ENDBOSS_ALERT = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
         'img/4_enemie_boss_chicken/2_alert/G6.png',
         'img/4_enemie_boss_chicken/2_alert/G7.png',
@@ -154,6 +159,48 @@ class DrawImages {
         'img/4_enemie_boss_chicken/2_alert/G10.png',
         'img/4_enemie_boss_chicken/2_alert/G11.png',
         'img/4_enemie_boss_chicken/2_alert/G12.png',
-     ];
- 
+    ];
+    /**
+   * Array of image paths representing coinbar frames for the Charcater 
+   * 
+   * @type {string[]}
+   * @param {string} IMAGES_COINBAR - Paths to coinbar animation frames
+   */
+    IMAGES_COINBAR = [
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/green/0.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/green/20.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/green/40.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/green/60.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/green/80.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/green/100.png',
+    ];
+    /**
+     * Array of image paths representing bottle frames for the Charcater 
+     * 
+     * @type {string[]}
+     * @param {string} IMAGES_BOTTLEBAR - Paths to bottlebar animation frames
+     */
+    IMAGES_BOTTLEBAR = [
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/0.png',
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/20.png',
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/40.png',
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/60.png',
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/80.png',
+        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/100.png',
+    ];
+    /**
+    * Array of image paths representing hp frames for the Charcater 
+    * 
+    * @type {string[]}
+    * @param {string} IMAGES_HPBAR - Paths to hpbar animation frames
+    */
+    IMAGES_HPBAR = [
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/20.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/40.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/60.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png',
+    ];
+
 }

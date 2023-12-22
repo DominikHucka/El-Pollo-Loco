@@ -1,15 +1,17 @@
 class EndBoss extends MovableObject {
+    speed = .5;
     height = 450;
     width = 350;
     y = 20;
     x = 3000;
     // x = 400;
     offset = {
-        left: 40 ,
+        left: 40,
         top: 100,
         right: 5,
         bottom: 15
     };
+
 
 
     constructor() {
@@ -22,16 +24,36 @@ class EndBoss extends MovableObject {
 
 
     animate() {
-        setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.drawImages.ENDBOSS_DEAD);
+        this.setStopInterval(() => {
+            this.moveObjects()
+        }, 1000 / 60);
 
-              } else if (this.isHurt()) {
-                this.playAnimation(this.drawImages.ENDBOSS_HURT);
+        this.setStopInterval(() => {
+            this.playAnimations()
+        }, 120);
+    }
 
-            //   } else if (this.startFight() && this.moveLeft()){
-            //     this.playAnimation(this.drawImages.ENDBOSS_WALKING);
-              }
-        }, 200);
+
+    moveObjects() {
+      this.moveLeft();
+    }
+
+
+    playAnimations() {
+        if (this.isDead()) {
+            this.playAnimation(this.drawImages.ENDBOSS_DEAD);
+
+        } else if (this.isHurt()) {
+            this.playAnimation(this.drawImages.ENDBOSS_HURT);
+        } else {
+            this.playAnimation(this.drawImages.ENDBOSS_WALKING);
+        }
+
+
+        // setInterval(() => {
+        //     if (this.isSpotted()) {
+        //         this.playAnimation(this.drawImages.ENDBOSS_WALKING);
+        //     }
+        // }, 1000 / 60); 
     }
 } 

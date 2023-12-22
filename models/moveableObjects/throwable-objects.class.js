@@ -61,7 +61,7 @@ class ThrowableObjects extends MovableObject {
             this.stopInterval();
             this.disappearObject(200);
             // setTimeout(() => {
-            //     this.IMAGES_SPLASH.forEach(splashBottle => {
+            //     this.IMAGES_SPLASH.forEach(splashBottle => { // Array kann nicht mit einer CSS klasser gekoppelt werden
             //         splashBottle.style.animate 
             //     });
             // }, 100);
