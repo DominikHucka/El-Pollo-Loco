@@ -58,7 +58,7 @@ class World {
                 this.hpBar.setPercentage(this.character.energy);
             } else if (enemy.energy == 0) {
                 enemy.stopInterval();
-                enemy.disappearObject();
+                enemy.disappearObject(700);
             }
         })
     }

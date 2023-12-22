@@ -8,3 +8,16 @@ canvas {
     background-color: rgb(87, 87, 87);
 }
 
+.animateOpacity {
+    animation: 1s fadeIn ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

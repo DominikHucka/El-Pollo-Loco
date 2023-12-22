@@ -41,7 +41,7 @@ class ThrowableObjects extends MovableObject {
         this.applyGravity();
         this.setStopInterval(() => {
             this.throw();
-            this.collidingBottle();
+            this.collidingBottleOnGround();
         }, 500 / 60);
 
     }
@@ -54,20 +54,19 @@ class ThrowableObjects extends MovableObject {
     }
 
 
-    collidingBottle() {
-        if (this.isDead() || this.y > 380 && !this.bottlleDestroyed) {
-            console.log('destroy Bottle:', this.isDead(), this.y, this.bottlleDestroyed)
-             this.playAnimation(this.IMAGES_SPLASH);
-             this.bottlleDestroyed = true;
+    collidingBottleOnGround() {
+        if (this.isDead() || this.y > 360) {
+            this.playAnimation(this.IMAGES_SPLASH);
             playSound(smashBottle);
             this.stopInterval();
-            // stopSound(smashBottle);
+            this.disappearObject(200);
+            // setTimeout(() => {
+            //     this.IMAGES_SPLASH.forEach(splashBottle => {
+            //         splashBottle.style.animate 
+            //     });
+            // }, 100);
         }
     }
 
-    // throw() {
-    //     if (this.isDead() || this.y > 350) {
-    //         this.playAnimation(this.IMAGES_SPLASH);
-    //     }
-    // }
 }  
+

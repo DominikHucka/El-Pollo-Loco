@@ -51,9 +51,9 @@ class MovableObject extends DrawableObject {
     }
 
 
-    isAboveGround() {
+    isAboveGround( ) {
         if (this instanceof ThrowableObjects) { //ThrowableObjects should allways fall 
-            return this.y < 380;
+            return this.y < 360;
         } else {
             return this.y < 180;
         }
@@ -117,10 +117,10 @@ class MovableObject extends DrawableObject {
     }
 
 
-    disappearObject() {
+    disappearObject(timer) {
         setTimeout(() => {
             this.y = 500;
-        }, 700);
+        }, timer);
     }
 
 
