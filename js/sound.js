@@ -29,5 +29,5 @@ function playSound(sound, volume = 1.0, playbackRate = 1.0) {
 
 function stopSound(sound) {
     sound.pause();
-    // stopSound.currentTime = 0;
+    stopSound.currentTime = 0;
 }

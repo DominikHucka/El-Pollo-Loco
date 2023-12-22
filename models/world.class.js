@@ -15,7 +15,7 @@ class World {
     collectedCoins = [];
     endBoss = new EndBoss();
     backgroundObject = new BackgroundObject();
-    
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -82,25 +82,55 @@ class World {
 
 
     checkCollisionBottles() {
-        this.throwableObjects.forEach((bottle) => {
+        this.throwableObjects.forEach((bottle, index) => {
             if (this.endBoss.isColliding(bottle)) {
                 bottle.hit(1);
-            } 
-
-            if (this.backgroundObject.isColliding(bottle)) {
-                this.hitGround = true;
-                bottle.hit(1);
             }
-        }); 
+            // if (bottle.y >= 500 && !bottle.destroyed) {
+            //     console.log('Destroying bottle:', bottle.y, bottle.destroyed);
+            //     bottle.hit(1);
+            //     bottle.destroyed = true;
+            //     bottle.stopInterval();
+            //     this.throwableObjects.splice(index, 1);
+           
+        });
     }
 
-    
+
+    // checkCollisionBottles() {
+    //     this.throwableObjects.forEach((bottle) => {
+    //         if (this.endBoss.isColliding(bottle)) {
+    //             bottle.hit(1);
+    //         } 
+    //         else if (bottle.y >= 300) { 
+    //             bottle.hit(1);
+    //             // bottle.stopInterval();
+    //         }
+
+    //     }); 
+    // }
+
+
     collectObjects() {
         setTimeout(() => {
+            // this.collectItems(this.level.bottles, this.collectedBottles, this.bottleBar, this.collectBottles.limitOfBottles, collectBottle);
+            // this.collectItems(this.level.coins, this.collectedCoins, this.coinBar, this.collectCoins.limitOfCoins, collectCoin);
             this.collectItemBottles();
             this.collectItemCoins();
         }, 5);
     }
+
+
+    // collectItems(itemArray, collectedItems, bar, limit, collectSound) {
+    //     itemArray.forEach((item, i) => {
+    //         if (this.character.isColliding(item) && collectedItems.length < limit) {
+    //             collectedItems.push(new bar());
+    //             bar.updateBar(collectedItems.length);
+    //             itemArray.splice(i, 1);
+    //             playSound(collectSound);
+    //         }
+    //     });
+    // }
 
 
     collectItemBottles() {
@@ -125,20 +155,6 @@ class World {
             }
         })
     }
-
-
-    // collectObjects(items, limitItems, newInstance) {
-    //     setTimeout(() => {
-    //         items.forEach((o, i) => {
-    //             if (this.character.isColliding(o) && this.collectedObjects.length < limitItems) {
-    //                 this.collectedObjects.push(newInstance); 
-    //                 this.bottleBar.updateStatusBars(this.collectedObjects.length);
-    //                 this.level.bottles.splice(i, 1); 
-    //                 console.log('check my array of bottles', this.collectedObjects);
-    //             }
-    //         })
-    //     }, 5);
-    // }
 
 
     checkThrowObjects() {

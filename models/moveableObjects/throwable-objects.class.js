@@ -1,5 +1,5 @@
 class ThrowableObjects extends MovableObject {
-    
+
 
     IMAGES_THROWBOTTLE = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -31,7 +31,8 @@ class ThrowableObjects extends MovableObject {
         this.energy = 1;
         this.hitBoss = false;
         // this.speedY = 2;
-        this.hitGround = false;
+        this.bottlleDestroyed = false;
+
     }
 
 
@@ -40,20 +41,33 @@ class ThrowableObjects extends MovableObject {
         this.applyGravity();
         this.setStopInterval(() => {
             this.throw();
-            this.x += 2.5;
+            this.collidingBottle();
         }, 500 / 60);
-       
+
     }
 
 
     throw() {
-        if (this.isDead()) {
-            this.playAnimation(this.IMAGES_SPLASH);
-            // playSound(smashBottle);
+        this.x += 2.5;
+        this.playAnimation(this.IMAGES_THROWBOTTLE);
+        playSound(rotationBottle, 0.5, 2);
+    }
+
+
+    collidingBottle() {
+        if (this.isDead() || this.y > 380 && !this.bottlleDestroyed) {
+            console.log('destroy Bottle:', this.isDead(), this.y, this.bottlleDestroyed)
+             this.playAnimation(this.IMAGES_SPLASH);
+             this.bottlleDestroyed = true;
+            playSound(smashBottle);
+            this.stopInterval();
             // stopSound(smashBottle);
-        } else {
-            this.playAnimation(this.IMAGES_THROWBOTTLE);
-            // playSound(rotationBottle, 0.5, 1.6);
         }
     }
-}   
+
+    // throw() {
+    //     if (this.isDead() || this.y > 350) {
+    //         this.playAnimation(this.IMAGES_SPLASH);
+    //     }
+    // }
+}  
