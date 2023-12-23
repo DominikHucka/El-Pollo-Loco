@@ -11,7 +11,7 @@ class EndBoss extends MovableObject {
         right: 5,
         bottom: 15
     };
-   
+
 
 
 
@@ -20,6 +20,7 @@ class EndBoss extends MovableObject {
         this.loadImages(this.drawImages.ENDBOSS_WALKING);
         this.loadImages(this.drawImages.ENDBOSS_DEAD);
         this.loadImages(this.drawImages.ENDBOSS_HURT);
+        this.loadImages(this.drawImages.ENDBOSS_ALERT);
         this.animate();
         this.x = 3000;
     }
@@ -28,17 +29,21 @@ class EndBoss extends MovableObject {
     animate() {
         this.setStopInterval(() => {
             this.moveObjects()
-        }, 1000 / 60);
+        }, 150);
 
         this.setStopInterval(() => {
             this.playAnimations()
-            this.enraged()
-        }, 120);
+        }, 100);
     }
 
 
     moveObjects() {
-       this.moveLeft();
+
+        if (this.alert()) {
+            this.stopMove();
+        } else {
+            this.moveLeft();
+        }
     }
 
 
@@ -48,24 +53,26 @@ class EndBoss extends MovableObject {
 
         } else if (this.isHurt()) {
             this.playAnimation(this.drawImages.ENDBOSS_HURT);
-        } else {
+
+        } else if (this.alert()) {
+            this.playAnimation(this.drawImages.ENDBOSS_ALERT);
+        } 
+        else {
             this.playAnimation(this.drawImages.ENDBOSS_WALKING);
         }
     }
 
-    enraged() {
-        setTimeout(() => {
-            this.height = 150;
-            this.width = 100;
-            this.speed = 12;
-            this.y = 280;
-            this.offset = {
-                left: 10,
-                right: 10, 
-                top: 30,
-                bottom: 20
-            }
-        }, 3000);
 
+    enraged() {
+        this.height = 150;
+        this.width = 100;
+        this.speed = 8;
+        this.y = 280;
+        this.offset = {
+            left: 10,
+            right: 10,
+            top: 30,
+            bottom: 20
+        }
     }
 } 

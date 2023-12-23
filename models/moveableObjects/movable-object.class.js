@@ -14,7 +14,7 @@ class MovableObject extends DrawableObject {
     };
     intervalIds = [];
     i = 1;
-    startMove = false;
+    stopped = false;
 
 
     isColliding(mo) {
@@ -77,15 +77,8 @@ class MovableObject extends DrawableObject {
     }
 
 
-    moveLeft(x) {
+    moveLeft() {
         this.x -= this.speed;
-        return x;
-    }
-
-
-    bossStartToMove() {
-        this.x -= this.speed;
-        return false;
     }
 
 
@@ -101,6 +94,26 @@ class MovableObject extends DrawableObject {
 
     isSpotted(range) {
         return this.x >= range;
+    }
+
+    stopMove() {
+       if ( this.stopped = true) {
+            this.x -= this.speed = 0;
+            this.x += this.speed = 0;
+       }
+        // this.setStopInterval(() => {
+        //     this.stopped = false; 
+        // }, 100);
+    }
+
+
+    alert() {
+        return this.energy == 70;
+    }
+
+
+    transformation() {
+        return this.energy <= 60;
     }
 
 

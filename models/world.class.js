@@ -26,6 +26,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+
     }
 
 
@@ -43,6 +44,7 @@ class World {
             this.checkCollisionEndboss();
             this.checkCollisionBottles();
             this.startEndbossFight();
+            // this.enragendEndboss();
         }, 150);
     }
 
@@ -97,13 +99,22 @@ class World {
 
     startEndbossFight() {
         if (this.character.isSpotted(2400)) {
-            console.log('Start Fight', this.character.isSpotted())
             this.endBoss.moveLeft();
-            this.endBoss.speed = 1;
-        } else if (this.endBoss.energy <= 60) {
-            this.endBoss.enraged();
+            this.endBoss.speed = 1.5;
+            console.log('Start Fight', this.character.isSpotted())
         }
     }
+
+
+    // enragendEndboss() {
+    //     if (this.endBoss.alert()) {
+    //         stopMove();
+    //         setTimeout(() => {
+    //             this.endBoss.enraged();
+    //         }, 2000);
+
+    //     }
+    // }
 
 
     collectObjects() {

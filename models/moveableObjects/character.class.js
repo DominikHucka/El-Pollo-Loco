@@ -85,12 +85,12 @@ class Character extends MovableObject {
                 this.counterLongidle++;
 
             } else {
-                this.counterLongidle = 0;   // Reset des Counter, wenn eine Taste gedrückt wird
+                this.counterLongidle = 0;   
             }
         }, 100);
 
         setInterval(() => {
-            if (this.counterLongidle > 40) { //Überprüfe, ob der Counter größer als 40 ist
+            if (this.counterLongidle > 40) { 
                 this.playAnimation(this.drawImages.CHARACTER_LONGIDLE);
             }
         }, 100);
