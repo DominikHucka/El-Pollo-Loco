@@ -10,6 +10,8 @@ class World {
     hpBar = new HpBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
+    hpbarEndboss = new HpbarEndboss();
+    iconFromEndboss = new IconFromEndboss();
     throwableObjects = [];
     collectedBottles = [];
     collectedCoins = [];
@@ -34,26 +36,14 @@ class World {
 
     run() {
         setInterval(() => {
-            setTimeout(() => {
-                this.checkCollisionChickens();
-                this.checkThrowObjects();
-                this.collectObjects();
-                this.checkCollisionEndboss();
-                this.checkCollisionBottles();
-                this.startEndbossFight();
-            }, 10);
+
+            this.checkCollisionChickens();
+            this.checkThrowObjects();
+            this.collectObjects();
+            this.checkCollisionEndboss();
+            this.checkCollisionBottles();
+            this.startEndbossFight();
         }, 150);
-    }
-
-
-    startEndbossFight() {
-        if (this.character.isSpotted() && !this.startMove) {
-            console.log('START FIGHT', this.character.isSpotted())
-            this.endBoss.moveLeft();
-           
-        } else {
-            this.endBoss.startMove = false;
-        }
     }
 
 
@@ -85,42 +75,35 @@ class World {
             if (!throwObject.hitBoss && throwObject.isColliding(this.endBoss)) {
                 this.endBoss.hit(10);
                 throwObject.hitBoss = true;
+                this.hpbarEndboss.setPercentage(this.endBoss.energy);
             }
-            if (this.endBoss.energy == 0) {
-
-            }
+            // if (this.endBoss.energy == 0) {
+            //     setTimeout(() => {
+            //         this.clearAllIntervals();
+            //     }, 1000);
+            // }
         });
     }
 
 
     checkCollisionBottles() {
-        this.throwableObjects.forEach((bottle, index) => {
+        this.throwableObjects.forEach((bottle) => {
             if (this.endBoss.isColliding(bottle)) {
                 bottle.hit(1);
             }
-            // if (bottle.y >= 500 && !bottle.destroyed) {
-            //     console.log('Destroying bottle:', bottle.y, bottle.destroyed);
-            //     bottle.hit(1);
-            //     bottle.destroyed = true;
-            //     bottle.stopInterval();
-            //     this.throwableObjects.splice(index, 1);
-           
         });
     }
 
 
-    // checkCollisionBottles() {
-    //     this.throwableObjects.forEach((bottle) => {
-    //         if (this.endBoss.isColliding(bottle)) {
-    //             bottle.hit(1);
-    //         } 
-    //         else if (bottle.y >= 300) { 
-    //             bottle.hit(1);
-    //             // bottle.stopInterval();
-    //         }
-
-    //     }); 
-    // }
+    startEndbossFight() {
+        if (this.character.isSpotted(2400)) {
+            console.log('Start Fight', this.character.isSpotted())
+            this.endBoss.moveLeft();
+            this.endBoss.speed = 1;
+        } else if (this.endBoss.energy <= 60) {
+            this.endBoss.enraged();
+        }
+    }
 
 
     collectObjects() {
@@ -193,6 +176,8 @@ class World {
         this.addToMap(this.hpBar);
         this.addToMap(this.coinBar);
         this.addToMap(this.bottleBar);
+        this.addToMap(this.hpbarEndboss);
+        this.addToMap(this.iconFromEndboss);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         this.addObjectToMap(this.level.enemies);
@@ -235,5 +220,10 @@ class World {
     flipImageBack(mo) {
         this.ctx.restore();
         mo.x = mo.x * -1;
+    }
+
+
+    clearAllIntervals() {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
 }

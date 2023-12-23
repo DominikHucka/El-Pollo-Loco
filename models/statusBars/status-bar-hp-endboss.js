@@ -1,10 +1,16 @@
-class HpBar extends StatusBar {
+class HpbarEndboss extends StatusBar {
+    x = 480;
    
 
-    constructor(){
+    constructor() {
         super();
-        this.loadImages(this.drawImages.IMAGES_HPBAR);
-        this.setPercentage(100);
+        this.loadImage(this.drawImages.IMAGES_ENBOSSBAR[5]);
+        this.loadImages(this.drawImages.IMAGES_ENBOSSBAR);
+        this.animate();
+    }
+
+    animate() {
+        this.otherDirection = true;
     }
      /**
      * 
@@ -24,4 +30,4 @@ class HpBar extends StatusBar {
         resolveImageHp()
     }
 
-}
+} 

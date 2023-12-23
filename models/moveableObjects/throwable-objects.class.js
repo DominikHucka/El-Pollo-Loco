@@ -59,7 +59,7 @@ class ThrowableObjects extends MovableObject {
             this.playAnimation(this.IMAGES_SPLASH);
             playSound(smashBottle);
             this.stopInterval();
-            this.disappearObject(200);
+            this.disappearObject(150);
             // setTimeout(() => {
             //     this.IMAGES_SPLASH.forEach(splashBottle => { // Array kann nicht mit einer CSS klasser gekoppelt werden
             //         splashBottle.style.animate 

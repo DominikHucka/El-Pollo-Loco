@@ -26,13 +26,16 @@ class MovableObject extends DrawableObject {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left;
     }
 
+
     isCollidingTop(mo) {
         return this.y + this.height - this.offset.bottom > mo.y + mo.offset.top;
     }
 
+
     isCollidingRight(mo) {
         return this.x + this.offset.left < mo.x + mo.width - mo.offset.right;
     }
+
 
     isCollidingBottom(mo) {
         return this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
@@ -52,7 +55,7 @@ class MovableObject extends DrawableObject {
     }
 
 
-    isAboveGround( ) {
+    isAboveGround() {
         if (this instanceof ThrowableObjects) { //ThrowableObjects should allways fall 
             return this.y < 360;
         } else {
@@ -74,8 +77,15 @@ class MovableObject extends DrawableObject {
     }
 
 
-    moveLeft() {
+    moveLeft(x) {
         this.x -= this.speed;
+        return x;
+    }
+
+
+    bossStartToMove() {
+        this.x -= this.speed;
+        return false;
     }
 
 
@@ -89,8 +99,15 @@ class MovableObject extends DrawableObject {
     }
 
 
-    spawnEndboss() {
-       return this.x = 2400;
+    isSpotted(range) {
+        return this.x >= range;
+    }
+
+
+    disappearObject(timer) {
+        setTimeout(() => {
+            this.y = 500;
+        }, timer);
     }
 
 
@@ -118,23 +135,6 @@ class MovableObject extends DrawableObject {
             this.world.keyboard.SPACE === false &&
             this.world.keyboard.D === false
         );
-    }
-
-
-    isSpotted() {
-       return this.x > 2400;
-    }
-
-
-    disappearObject(timer) {
-        setTimeout(() => {
-            this.y = 500;
-        }, timer);
-    }
-
-
-    clearAllIntervals() {
-        for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
 
 

@@ -202,5 +202,18 @@ class DrawImages {
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png',
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png',
     ];
-
+    /**
+    * Array of image paths representing hp frames for the Endboss 
+    * 
+    * @type {string[]}
+    * @param {string} IMAGES_RNBOSSBAR - Paths to hpbar animation frames
+    */
+    IMAGES_ENBOSSBAR = [
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/20.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/40.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/60.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png',
+    ];
 }
