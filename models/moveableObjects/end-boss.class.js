@@ -11,6 +11,7 @@ class EndBoss extends MovableObject {
         right: 5,
         bottom: 15
     };
+    runArea = 1000;
 
 
 
@@ -23,13 +24,14 @@ class EndBoss extends MovableObject {
         this.loadImages(this.drawImages.ENDBOSS_ALERT);
         this.animate();
         this.x = 3000;
+        this.runArea = 1000;
     }
 
 
     animate() {
         this.setStopInterval(() => {
             this.moveObjects()
-        }, 150);
+        }, 1000 / 60);
 
         this.setStopInterval(() => {
             this.playAnimations()
@@ -39,11 +41,87 @@ class EndBoss extends MovableObject {
 
     moveObjects() {
 
-        if (this.alert()) {
-            this.stopMove();
-        } else {
-            this.moveLeft();
-        }
+
+
+
+        // Vorhandener Code...
+
+        // if (this.alert()) {
+        //     if (this.x > this.runArea) {
+        //         this.moveLeft();
+        //     } else {
+        //         this.otherDirection = true;
+        //         this.x += this.speed;
+        //         console.log('Zeige Rückwärtsbewegung', this.x);
+
+        //         // Überprüfen, ob die Gesundheit unter 70 liegt und den "enraged"-Zustand anwenden
+        //         if (this.energy <= 70) {
+        //             this.enraged();
+        //         }
+        //     }
+        // } else if (this.otherDirection) {
+        //     this.moveRight();
+        //     console.log('Zeige Bewegung nach rechts', this.x);
+        // } else {
+        //     this.moveLeft();
+        // }
+
+        // Vorhandener Code...
+
+
+        // if (this.alert()) {
+        //     if (this.x > this.world.level.endBoss_area) {
+        //         this.moveLeft();
+        //     } else {
+        //         this.otherDirection = true;w
+        //         this.x += this.speed;
+        //         console.log('show moveback', this.x);
+        //     }
+        // } else if (this.otherDirection) {
+        //     this.moveRight();
+        //     console.log('show moveRight', this.x);
+        // } else {
+        //     this.moveLeft();  // Normal nach links bewegen
+        // }
+
+        // if (this.alert()) {
+        //     if (this.x > this.runArea) {
+        //         this.moveLeft();
+        //     } else {
+        //         this.otherDirection = true;
+        //         this.x += this.speed;
+        //         console.log('show moveback', this.x);
+        //     }
+        // } else {
+        //     if (this.otherDirection) {
+        //         this.x += this.speed; // Nur nach rechts bewegen, wenn otherDirection gesetzt ist
+        //         console.log('show moveRight', this.x);
+        //     } else {
+        //         this.moveLeft(); // Normal nach links bewegen
+        //     }
+        // }
+        // if (this.alert()) {
+        //     if (this.x > this.runArea) {
+        //         this.moveLeft();
+        //      } else {
+        //         this.otherDirection = true;
+        //         this.x += this.speed;
+        //         console.log('show moveback', this.x += this.speed);
+        //     }
+        // } else {
+        //     this.moveLeft();
+        // }
+
+        // if (this.stopMove) {
+
+        // }
+
+        // this.moveLeft();
+        // if (this.alert()) {
+        //     this.stopMove();
+        // } else {
+        //     this.moveLeft();
+        // }
     }
 
 
@@ -56,7 +134,8 @@ class EndBoss extends MovableObject {
 
         } else if (this.alert()) {
             this.playAnimation(this.drawImages.ENDBOSS_ALERT);
-        } 
+        }
+
         else {
             this.playAnimation(this.drawImages.ENDBOSS_WALKING);
         }

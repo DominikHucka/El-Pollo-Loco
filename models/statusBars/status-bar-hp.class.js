@@ -21,7 +21,7 @@ class HpBar extends StatusBar {
      * @returns update StatusBar from 100% => 0% = Dead !!! 
      */
     resolveImageIndex() {
-        resolveImageHp()
+        this.resolveImageHp()
     }
 
 }

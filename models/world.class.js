@@ -99,22 +99,17 @@ class World {
 
     startEndbossFight() {
         if (this.character.isSpotted(2400)) {
-            this.endBoss.moveLeft();
+            // this.endBoss.moveLeft();
             this.endBoss.speed = 1.5;
             console.log('Start Fight', this.character.isSpotted())
+        } else if (this.endBoss.alert()) {
+            setTimeout(() => {
+                this.endBoss.enraged();
+                // this.endBoss.tackle();
+                // this.camera_x = -this.x + 500;
+            }, 500);
         }
     }
-
-
-    // enragendEndboss() {
-    //     if (this.endBoss.alert()) {
-    //         stopMove();
-    //         setTimeout(() => {
-    //             this.endBoss.enraged();
-    //         }, 2000);
-
-    //     }
-    // }
 
 
     collectObjects() {

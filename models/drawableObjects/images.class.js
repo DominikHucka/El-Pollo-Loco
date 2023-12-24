@@ -206,7 +206,7 @@ class DrawImages {
     * Array of image paths representing hp frames for the Endboss 
     * 
     * @type {string[]}
-    * @param {string} IMAGES_RNBOSSBAR - Paths to hpbar animation frames
+    * @param {string} IMAGES_ENDBOSSBAR - Paths to hpbar animation frames
     */
     IMAGES_ENBOSSBAR = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/0.png',
@@ -216,4 +216,24 @@ class DrawImages {
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png',
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png',
     ];
+     /**
+    * Array of image paths representing coins frames for the World
+    * 
+    * @type {string[]}
+    * @param {string} IMAGES_COINS - Paths to coins animation frames
+    */
+    IMAGES_COINS = [
+        'img/8_coin/coin_1.png',
+        'img/8_coin/coin_2.png',
+    ]
+     /**
+    * Array of image paths representing bottle frames for the World
+    * 
+    * @type {string[]}
+    * @param {string} IMAGES_COINS - Paths to bottles animation frames
+    */
+    IMAGES_BOTTLES = [
+        'img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
+        'img/6_salsa_bottle/2_salsa_bottle_on_ground.png',
+    ]
 }
