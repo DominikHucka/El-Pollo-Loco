@@ -74,13 +74,11 @@ class MovableObject extends DrawableObject {
 
     moveRight() {
         this.x += this.speed;
-        return true;
     }
 
 
     moveLeft() {
         this.x -= this.speed;
-        return true;
     }
 
 
@@ -107,9 +105,9 @@ class MovableObject extends DrawableObject {
     }
 
 
-    alert() {
-        return this.energy <= 70;
-    }
+    // alert() {
+    //     return this.energy <= 70;
+    // }
 
 
     disappearObject(timer) {

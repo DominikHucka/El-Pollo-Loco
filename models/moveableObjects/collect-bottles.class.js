@@ -23,7 +23,7 @@ class CollectBottles extends MovableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.drawImages.IMAGES_BOTTLES);
-        }, 150);
+        }, 200);
     }
 
 }

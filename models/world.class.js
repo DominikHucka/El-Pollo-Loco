@@ -44,7 +44,6 @@ class World {
             this.checkCollisionEndboss();
             this.checkCollisionBottles();
             this.startEndbossFight();
-            // this.enragendEndboss();
         }, 150);
     }
 
@@ -102,7 +101,7 @@ class World {
             // this.endBoss.moveLeft();
             this.endBoss.speed = 1.5;
             console.log('Start Fight', this.character.isSpotted())
-        } else if (this.endBoss.alert()) {
+        } else if (this.endBoss.energy <= 70) {
             setTimeout(() => {
                 this.endBoss.enraged();
                 // this.endBoss.tackle();
