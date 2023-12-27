@@ -15,7 +15,7 @@ class MovableObject extends DrawableObject {
     intervalIds = [];
     i = 1;
     stopped = false;
-   
+
 
     isColliding(mo) {
         return this.isCollidingLeft(mo) && this.isCollidingTop(mo) && this.isCollidingRight(mo) && this.isCollidingBottom(mo);
@@ -93,21 +93,14 @@ class MovableObject extends DrawableObject {
 
 
     isSpotted(range) {
-        return this.x >= range;
+        return this.x + this.width >= range;
     }
 
 
     stopMove() {
-        if (this.stopped = true) {
-            this.x -= this.speed = 0;
-            this.x += this.speed = 0;
-        }
+        this.x -= this.speed = 0;
+        this.x += this.speed = 0;
     }
-
-
-    // alert() {
-    //     return this.energy <= 70;
-    // }
 
 
     disappearObject(timer) {
@@ -124,6 +117,10 @@ class MovableObject extends DrawableObject {
         } else {
             this.lastHit = new Date().getTime();
         }
+    }
+
+    immunity(lifePoints) {
+        return this.energy + lifePoints;
     }
 
 

@@ -53,8 +53,10 @@ class World {
             if (this.character.isColliding(enemy)) {
                 if (enemy.isColliding(this.character) && this.character.isAboveGround()) {
                     enemy.hit(100);
-                    this.character.jump()
-                    this.character.energy + 5;
+                    this.character.jump();
+                    // this.character.energy + 5;
+                    // this.character.checkImmunity();
+
                 } else {
                     this.character.hit(5);
                 }
@@ -68,21 +70,34 @@ class World {
 
 
     checkCollisionEndboss() {
-        if (this.character.isColliding(this.endBoss)) {
+        if (this.endBoss.width === 100 && this.endBoss.isColliding(this.character)) {
+            if (this.character.isAboveGround() && this.character.isColliding(this.endBoss)) {
+                this.character.jump();
+                // this.character.immunity(50);
+                this.endBoss.hit(20);
+                this.hpbarEndboss.setPercentage(this.endBoss.energy);
+            } else {
+                this.character.hit(50);
+                this.hpBar.setPercentage(this.character.energy);
+            }
+            
+        } else if (this.character.isColliding(this.endBoss)) {
             this.character.hit(20);
             this.hpBar.setPercentage(this.character.energy);
+
+        } else if (this.endBoss.energy <= 0) {
+            this.endBoss.stopMove()
+            setTimeout(() => {
+                this.clearAllIntervals();
+            }, 1000);
         }
+
         this.throwableObjects.forEach((throwObject) => {
             if (!throwObject.hitBoss && throwObject.isColliding(this.endBoss)) {
-                this.endBoss.hit(10);
+                this.endBoss.hit(20);
                 throwObject.hitBoss = true;
                 this.hpbarEndboss.setPercentage(this.endBoss.energy);
             }
-            // if (this.endBoss.energy == 0) {
-            //     setTimeout(() => {
-            //         this.clearAllIntervals();
-            //     }, 1000);
-            // }
         });
     }
 
@@ -98,15 +113,15 @@ class World {
 
     startEndbossFight() {
         if (this.character.isSpotted(2400)) {
-            // this.endBoss.moveLeft();
             this.endBoss.speed = 1.5;
             console.log('Start Fight', this.character.isSpotted())
-        } else if (this.endBoss.energy <= 70) {
+        } else if (this.endBoss.energy <= 80) {
+            this.endBoss.speed = 3;
+        }
+        if (this.endBoss.energy <= 20) {
             setTimeout(() => {
                 this.endBoss.enraged();
-                // this.endBoss.tackle();
-                // this.camera_x = -this.x + 500;
-            }, 500);
+            }, 100);
         }
     }
 

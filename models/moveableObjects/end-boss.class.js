@@ -11,8 +11,9 @@ class EndBoss extends MovableObject {
         right: 5,
         bottom: 15
     };
-    runArea = 1800;
+    runArea = 1000;
     startingX = 2400;
+   
 
 
 
@@ -37,60 +38,34 @@ class EndBoss extends MovableObject {
             this.playAnimations()
         }, 100);
     }
-
+    
 
     moveObjects() {
-        if (this.energy <= 70) {
+        if (this.isDead()) {
+            this.stopMove();
+            return;
+        }
+
+        if (this.width === 100) {
             if (this.x > this.runArea && !this.otherDirection) {
                 this.moveLeft();
             } else {
                 this.otherDirection = true;
-                this.x += this.speed;
-                console.log('show moveback', this.x);
-    
-                // Wenn der Endboss den Ursprung erreicht hat, die Richtung umkehren
+                this.moveRight();
                 if (this.x >= this.startingX) {
                     this.otherDirection = false;
-                    this.normalModus();
                     this.moveLeft();
                 }
             }
         } else {
+            // Hier wird die normale Bewegungslogik ausgeführt, unabhängig vom Zustand des Bosses
             if (this.otherDirection) {
-                this.x += this.speed;
+                this.moveRight();
                 console.log('show moveRight', this.x);
             } else {
                 this.moveLeft();
             }
         }
-
-        
-    //     if (this.energy <= 70) {
-    //         if (this.x > this.runArea && !this.otherDirection) {
-    //             this.moveLeft();
-    //         } else {
-    //             this.otherDirection = true;
-    //             this.x += this.speed;
-    //             console.log('show moveback', this.x);
-    
-    //             // Wenn der Endboss den Ursprung erreicht hat, die Richtung umkehren
-    //             if (this.x >= this.startingX) {
-    //                 if (this.otherDirection = false) {
-    //                     this.normalModus();
-    //                     this.moveLeft();
-    //                 }
-    //                 // this.otherDirection = false;
-                  
-    //             }
-    //         }
-    //     } else {
-    //         if (this.otherDirection) {
-    //             this.x += this.speed;
-    //             console.log('show moveRight', this.x);
-    //         } else {
-    //             this.moveLeft();
-    //         }
-    //     }
     }
 
 
@@ -115,27 +90,13 @@ class EndBoss extends MovableObject {
     enraged() {
         this.height = 150;
         this.width = 100;
-        this.speed = 8;
+        this.speed = 10;
         this.y = 280;
-        this.offset = {
-            left: 10,
-            right: 10,
-            top: 30,
+        this. offset = {
+            left: 20,
+            right: 20,
+            top: 20,
             bottom: 20
         }
-    }
-
-
-    normalModus() {
-        this.speed = 0.1;
-        this.height = 450;
-        this.width = 350;
-        this.y = 20;
-        this.offset = {
-            left: 40,
-            top: 100,
-            right: 5,
-            bottom: 15
-        };
     }
 }
