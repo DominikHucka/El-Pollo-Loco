@@ -1,5 +1,6 @@
 class MosquitoSecondSwarm extends ArmyOfMosquitos {
 
+    
     constructor() {
         super();
         this.x = 3800 + Math.random() * 1000;

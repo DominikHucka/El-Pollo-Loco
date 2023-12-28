@@ -9,6 +9,7 @@ class HpbarEndboss extends StatusBar {
         this.animate();
     }
 
+    
     animate() {
         this.otherDirection = true;
     }

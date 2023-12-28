@@ -23,5 +23,4 @@ class HpBar extends StatusBar {
     resolveImageIndex() {
         this.resolveImageHp()
     }
-
 }

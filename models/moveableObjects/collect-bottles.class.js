@@ -2,7 +2,7 @@ class CollectBottles extends MovableObject {
     y = 340
     width = 100;
     height = 100;
-    limitOfBottles = 5; 
+    limitOfBottles = 5;
     offset = {
         bottom: 10,
         top: 10,
@@ -18,12 +18,12 @@ class CollectBottles extends MovableObject {
         this.x = 500 + Math.random() * 2000;
         this.animate();
     }
-
-
+    /**
+    * Animates the bottles by cycling through the images at regular intervals.
+    */
     animate() {
         setInterval(() => {
             this.playAnimation(this.drawImages.IMAGES_BOTTLES);
         }, 200);
     }
-
 }

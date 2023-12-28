@@ -7,29 +7,28 @@ class DrawableObject {
     height = 150;
     width = 150;
     drawImages = new DrawImages();
-    // limitOfItems = 5; 
-    // percantage = 100;
+    drawFrameEnabled = false;
     /**
-     * 
-     * @param {Parameters} path - new Image() constructor creates and returns a new HTMLImageElement object => this.img = document.getElementById('image') <id="image" src>
-     */
+    * @description Loads an image from the specified path and sets it as the object's image.
+    * @param {string} path - The path to the image file.
+    */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
     /**
-     * 
-     * @param {Function} ctx - draw all Objects => WORLD
-     */
+    * @description Draws the object on the canvas using the provided context.
+    * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of the canvas.
+    */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     /**
-     * 
-     * @param {Function} ctx - draw Stroke around the Objects => check the Collision 
-     */
+    * @description Draws the frame (bounding box) around the object on the canvas.
+    * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of the canvas.
+    */
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Mosquito) {
+        if (this.drawFrameEnabled && (this instanceof Character || this instanceof MosquitoLastSwarm)) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";
@@ -38,8 +37,8 @@ class DrawableObject {
         }
     }
     /**
-     * 
-    * @param {Array} arr - ['img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk1.png','img/pixel-art-fantasy-game-main-heroes/PNG/Mage/Walk/walk2.png', .....] 
+    * @description Loads images from an array and stores them in the image cache.
+    * @param {string[]} arr - Array of image paths to be loaded.
     */
     loadImages(arr) {
         arr.forEach(path => {
@@ -49,3 +48,4 @@ class DrawableObject {
         });
     }
 }
+

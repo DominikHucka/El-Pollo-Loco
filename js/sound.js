@@ -20,7 +20,7 @@ const rotationBottle = rotationBottle_sound = new Audio('audio/levels/bottle_rot
 //ENDBOSS
 const startEndboss = startEndboss_sound = new Audio('audio/enemies/boss_battle.WAV');
 const startScreamEndboss = startScreamEndboss_sound = new Audio('audio/enemies/endboss_start.mp3');
-const hitEndboss = hitEndboss_sound = new Audio ('audio/enemies/hit_endboss.mp3');
+const hitEndboss = hitEndboss_sound = new Audio('audio/enemies/hit_endboss.mp3');
 /**
  * Plays a sound with customizable volume and playback rate.
  *
@@ -33,7 +33,10 @@ function playSound(sound, volume = 1.0, playbackRate = 1.0) {
     sound.playbackRate = playbackRate;
     sound.play();
 }
-
+/**
+ * @description Stops playing the given sound.
+ * @param {HTMLAudioElement} sound - The sound to be stopped.
+ */
 function stopSound(sound) {
     sound.pause();
     stopSound.currentTime = 0;

@@ -10,15 +10,16 @@ class Cloud extends MovableObject {
         this.speed = 1  + Math.random() * 0.5;
         this.animate();
     }
-    
-    
+    /**
+    * Animates the throwable objects by moving them to the left and resetting their position
+    * when they go beyond a certain boundary.
+    */
     animate() {
         setInterval(() => {
             this.moveLeft();
             if (this.x + this.width < -500) {
                 this.resetPosition();
             }
-        }, 30);
-        
+        }, 30);    
     }
 }

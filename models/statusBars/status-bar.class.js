@@ -4,21 +4,15 @@ class StatusBar extends DrawableObject {
     width = 200;
     height = 60;
     percantage = 100;
-    // amountItems = 0;
 
 
     constructor() {
         super();
-        // this.updateStatusBars();      
     }
-
-    // updateStatusBars(images, amountItems) {
-    //     this.amountItems = amountItems;
-    //     let path = images[this.setAmountItems()];
-    //     this.img = this.imageChache[path];
-    // }
-
-
+    /**
+   * @description Sets the amount of items based on the value of `amountItems`.
+   * @returns {number} The adjusted amount of items.
+   */
     setAmountItems() {
         if (this.amountItems == 5) {
             return 5;
@@ -34,8 +28,10 @@ class StatusBar extends DrawableObject {
             return 0;
         }
     }
-
-
+    /**
+    * @description Resolves the image index for the health bar based on the percentage value.
+    * @returns {number} The image index.
+    */
     resolveImageHp() {
         if (this.percantage == 100) {
             return 5;

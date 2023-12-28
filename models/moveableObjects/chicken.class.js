@@ -9,7 +9,7 @@ class Chicken extends MovableObject {
         right: 0,
         bottom: 0
     };
-    
+
 
     constructor() {
         super().loadImage(this.drawImages.CHICKEN_WALKING[0]);
@@ -19,24 +19,22 @@ class Chicken extends MovableObject {
         this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
     }
-
-
+    /**
+    * Initiates animation loops for moving objects and playing animations.
+    */
     animate() {
-        this.setStopInterval(() => {
-            this.moveObjects()
-        }, 1000 / 60);
-
-        this.setStopInterval(() => {
-           this.playAnimations()
-        }, 120);
+        this.setStopInterval(() => this.moveObjects(), 1000 / 60);
+        this.setStopInterval(() => this.playAnimations(), 120);
     }
-
-
+    /**
+     * Move objects, e.g., move the chicken to the left.
+     */
     moveObjects() {
         this.moveLeft();
     }
-
-    
+    /**
+     * Play animations based on the object's state, e.g., play walking or dead animation for a chicken.
+     */
     playAnimations() {
         if (this.isDead()) {
             this.playAnimation(this.drawImages.CHICKEN_DEAD);
