@@ -67,7 +67,7 @@ class EndBoss extends MovableObject {
     playAnimations() {
         if (this.isDead()) {
             this.playAnimation(this.drawImages.ENDBOSS_DEAD);
-            playSound(deadChicken, 1, 1);
+            playSound(deadChicken, 1, 0.5);
 
         } else if (this.isHurt()) {
             this.playAnimation(this.drawImages.ENDBOSS_HURT);
@@ -82,7 +82,7 @@ class EndBoss extends MovableObject {
     enraged() {
         this.height = 150;
         this.width = 100;
-        this.speed = 12;
+        this.speed = 10;
         this.y = 280;
         this. offset = {
             left: 20,

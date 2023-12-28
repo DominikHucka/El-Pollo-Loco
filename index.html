@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>El Pollo Loco</title>
+    <link rel="shortcut icon" href="/img/11_start_page/favicon.png" type="image/x-icon">
     <script src="models/drawableObjects/drawable-object.class.js"></script>
     <script src="models/moveableObjects/movable-object.class.js"></script>
     <script src="models/statusBars/status-bar.class.js"></script>
@@ -15,8 +17,8 @@
     <script src="models/statusBars/status-bar-bottle.class.js"></script>
     <script src="models/moveableObjects/throwable-objects.class.js"></script>
     <script src="models/keyboard.class.js"></script>
-    <script src="models/level.class.js"></script> 
-    <script src="models/moveableObjects/army-of-mosquitos.class.js"></script> 
+    <script src="models/level.class.js"></script>
+    <script src="models/moveableObjects/army-of-mosquitos.class.js"></script>
     <script src="models/moveableObjects/chicken.class.js"></script>
     <script src="models/moveableObjects/mosquito.class.js"></script>
     <script src="models/moveableObjects/mosquito2.class.js"></script>
@@ -27,20 +29,36 @@
     <script src="models/moveableObjects/collect-bottles.class.js"></script>
     <script src="models/drawableObjects/images.class.js"></script>
     <script src="models/moveableObjects/collect-coins.class.js"></script>
-    <script src="models/moveableObjects/end-boss.class.js"></script> 
+    <script src="models/moveableObjects/end-boss.class.js"></script>
     <script src="levels/level1.js"></script>
     <script src="models/world.class.js"></script>
     <script src="js/sound.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body onload="init()">
-    
-    <h1>El Pollo Loco</h1>
 
-    <canvas id="canvas" width="720"  height="480">
+<body>
 
-    </canvas>
+    <h1 id="title">El Pollo Loco</h1>
+
+    <div class="content">
+        <div id="start" class="start">
+            <img id="startScreen" src="img/9_intro_outro_screens/start/startscreen_1.png">
+            <div class="play-game">
+                <span class="hoverStyle hoverBackground" onclick="startGame()">Play Game</span>
+            </div>
+            <div class="instruction">
+                <span class="hoverStyle hoverBackground" onclick="howToPlay()">How to play</span>
+            </div>
+            <div class="sign">
+                <span class="hoverStyle hoverBackground" onclick="settings()">Settings</span>
+            </div>
+        </div>
+        
+
+        <canvas id="canvas" width="720" height="480"></canvas>
+    </div>
 
 
 </body>
+
 </html>
