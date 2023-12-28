@@ -30,9 +30,9 @@ class ThrowableObjects extends MovableObject {
         this.animate();
         this.energy = 1;
         this.hitBoss = false;
-        // this.speedY = 2;
-        this.bottlleDestroyed = false;
-
+        // this.lastThrowTime = 0;
+        // this.throwCooldown = 1000;
+        // this.throwing = false;
     }
 
 
@@ -41,12 +41,14 @@ class ThrowableObjects extends MovableObject {
         this.applyGravity();
         this.setStopInterval(() => {
             this.throw();
+            // this.tryThrow();
             this.collidingBottleOnGround();
         }, 500 / 60);
 
     }
 
 
+    
     throw() {
         this.x += 2.5;
         this.playAnimation(this.IMAGES_THROWBOTTLE);
@@ -60,13 +62,20 @@ class ThrowableObjects extends MovableObject {
             playSound(smashBottle);
             this.stopInterval();
             this.disappearObject(150);
-            // setTimeout(() => {
-            //     this.IMAGES_SPLASH.forEach(splashBottle => { // Array kann nicht mit einer CSS klasser gekoppelt werden
-            //         splashBottle.style.animate 
-            //     });
-            // }, 100);
         }
     }
 
+
+    // tryThrow() {
+    //     const currentTime = Date.now();
+    //     if (!this.throwing && currentTime - this.lastThrowTime >= this.throwCooldown) {
+    //         this.throwing = true;
+    //         this.throw();
+    //         this.lastThrowTime = currentTime;
+    //         setTimeout(() => {
+    //             this.throwing = false;
+    //         }, 100); // Zeitverzögerung, um sicherzustellen, dass der Cooldown eingehalten wird
+    //     }
+    // }
 }  
 

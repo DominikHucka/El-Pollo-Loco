@@ -15,9 +15,6 @@ class EndBoss extends MovableObject {
     startingX = 2400;
    
 
-
-
-
     constructor() {
         super().loadImage(this.drawImages.ENDBOSS_WALKING[0]);
         this.loadImages(this.drawImages.ENDBOSS_WALKING);
@@ -45,7 +42,6 @@ class EndBoss extends MovableObject {
             this.stopMove();
             return;
         }
-
         if (this.width === 100) {
             if (this.x > this.runArea && !this.otherDirection) {
                 this.moveLeft();
@@ -58,30 +54,26 @@ class EndBoss extends MovableObject {
                 }
             }
         } else {
-            // Hier wird die normale Bewegungslogik ausgeführt, unabhängig vom Zustand des Bosses
             if (this.otherDirection) {
                 this.moveRight();
-                console.log('show moveRight', this.x);
             } else {
                 this.moveLeft();
             }
         }
+       
     }
 
 
     playAnimations() {
         if (this.isDead()) {
             this.playAnimation(this.drawImages.ENDBOSS_DEAD);
+            playSound(deadChicken, 1, 1);
 
         } else if (this.isHurt()) {
             this.playAnimation(this.drawImages.ENDBOSS_HURT);
+            playSound(hitEndboss);
 
-        }
-        // else if (this.alert()) {
-        //     this.playAnimation(this.drawImages.ENDBOSS_ALERT);
-        // }
-
-        else {
+        } else {
             this.playAnimation(this.drawImages.ENDBOSS_WALKING);
         }
     }

@@ -119,6 +119,7 @@ class MovableObject extends DrawableObject {
         }
     }
 
+
     immunity(lifePoints) {
         return this.energy + lifePoints;
     }
@@ -150,6 +151,5 @@ class MovableObject extends DrawableObject {
     stopInterval() {
         this.intervalIds.forEach(clearInterval);
     }
-
 }
 

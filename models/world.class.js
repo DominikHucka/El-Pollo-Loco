@@ -15,6 +15,7 @@ class World {
     throwableObjects = [];
     collectedBottles = [];
     collectedCoins = [];
+    mosquito = new Mosquito();
     endBoss = new EndBoss();
     backgroundObject = new BackgroundObject();
 
@@ -32,13 +33,14 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        // playSound(gamePlay, 0.5, 1);
     }
 
 
     run() {
         setInterval(() => {
-
             this.checkCollisionChickens();
+            this.checkCollisionMosquito();
             this.checkThrowObjects();
             this.collectObjects();
             this.checkCollisionEndboss();
@@ -49,13 +51,11 @@ class World {
 
 
     checkCollisionChickens() {
-        this.level.enemies.forEach((enemy) => {
+        this.level.chickens.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (enemy.isColliding(this.character) && this.character.isAboveGround()) {
                     enemy.hit(100);
                     this.character.jump();
-                    // this.character.energy + 5;
-                    // this.character.checkImmunity();
 
                 } else {
                     this.character.hit(5);
@@ -66,6 +66,14 @@ class World {
                 enemy.disappearObject(700);
             }
         })
+    }
+
+
+    checkCollisionMosquito() {
+        if (this.character.isSpotted(290)) {
+            console.log('start fight');
+            this.mosquito.flyingAttack();
+        }
     }
 
 
@@ -80,7 +88,7 @@ class World {
                 this.character.hit(50);
                 this.hpBar.setPercentage(this.character.energy);
             }
-            
+
         } else if (this.character.isColliding(this.endBoss)) {
             this.character.hit(20);
             this.hpBar.setPercentage(this.character.energy);
@@ -112,16 +120,18 @@ class World {
 
 
     startEndbossFight() {
-        if (this.character.isSpotted(2400)) {
+        if (this.character.isSpotted(2300)) {
             this.endBoss.speed = 1.5;
+            playSound(startEndboss);
+            playSound(startScreamEndboss);
             console.log('Start Fight', this.character.isSpotted())
         } else if (this.endBoss.energy <= 80) {
-            this.endBoss.speed = 3;
+            this.endBoss.speed = 2.5;
         }
         if (this.endBoss.energy <= 20) {
             setTimeout(() => {
                 this.endBoss.enraged();
-            }, 100);
+            }, 200);
         }
     }
 
@@ -186,12 +196,28 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
+        this.drawObjectsToMap();
+        this.drawToMap();
+        //draw() wird immer wieder aufgerufen
+        let self = this;
+        requestAnimationFrame(function () {
+            self.draw();
+        });
+    }
+
+
+    drawObjectsToMap() {
         this.addObjectToMap(this.level.backgroundObjects);
         this.addObjectToMap(this.level.clouds);
-        this.addToMap(this.endBoss);
         this.addObjectToMap(this.throwableObjects);
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.coins);
+        this.addObjectToMap(this.level.chickens);
+    }
+
+
+    drawToMap() {
+        this.addToMap(this.endBoss);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.hpBar);
         this.addToMap(this.coinBar);
@@ -200,13 +226,8 @@ class World {
         this.addToMap(this.iconFromEndboss);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
-        this.addObjectToMap(this.level.enemies);
+        this.addToMap(this.mosquito);
         this.ctx.translate(-this.camera_x, 0);
-        //draw() wird immer wieder aufgerufen
-        let self = this;
-        requestAnimationFrame(function () {
-            self.draw();
-        });
     }
 
 

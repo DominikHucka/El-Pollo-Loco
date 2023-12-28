@@ -7,13 +7,20 @@ const throwCharacter = throw_sound = new Audio('audio/levels/throw.mp3');
 // CHICKENS
 const deadChicken = chicken_dead_sound = new Audio('audio/enemies/chicken_dead.mp3');
 
-// COLLECT ITEMS 
+// BACKGROUND
 const collectBottle = collect_sound = new Audio('audio/levels/collect.wav');
 const collectCoin = coin_sound = new Audio('audio/levels/coin (1).flac');
+const themeStart = themeStart_sound = new Audio('audio/menu/miniature_saloon.wav');
+const gamePlay = gamePlay_sound = new Audio('audio/levels/spagetti western.ogg');
 
 //THROW ITEMS
 const smashBottle = smashBottle_sound = new Audio('audio/levels/smash_bottle.mp3');
 const rotationBottle = rotationBottle_sound = new Audio('audio/levels/bottle_rotate.mp3');
+
+//ENDBOSS
+const startEndboss = startEndboss_sound = new Audio('audio/enemies/boss_battle.WAV');
+const startScreamEndboss = startScreamEndboss_sound = new Audio('audio/enemies/endboss_start.mp3');
+const hitEndboss = hitEndboss_sound = new Audio ('audio/enemies/hit_endboss.mp3');
 /**
  * Plays a sound with customizable volume and playback rate.
  *

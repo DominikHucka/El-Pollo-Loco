@@ -144,12 +144,12 @@ class DrawImages {
         'img/4_enemie_boss_chicken/4_hurt/G22.png',
         'img/4_enemie_boss_chicken/4_hurt/G23.png',
     ];
-     /**
-    * Array of image paths representing alert animation frames for the ENDBOSS
-    * 
-    * @type {string[]}
-    * @param {string} ENDBOSS_ALERT - Paths to alert animation frames
-    */
+    /**
+   * Array of image paths representing alert animation frames for the ENDBOSS
+   * 
+   * @type {string[]}
+   * @param {string} ENDBOSS_ALERT - Paths to alert animation frames
+   */
     ENDBOSS_ALERT = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
         'img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -216,24 +216,72 @@ class DrawImages {
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/80.png',
         'img/7_statusbars/1_statusbar/2_statusbar_health/orange/100.png',
     ];
-     /**
-    * Array of image paths representing coins frames for the World
-    * 
-    * @type {string[]}
-    * @param {string} IMAGES_COINS - Paths to coins animation frames
-    */
+    /**
+   * Array of image paths representing coins frames for the World
+   * 
+   * @type {string[]}
+   * @param {string} IMAGES_COINS - Paths to coins animation frames
+   */
     IMAGES_COINS = [
         'img/8_coin/coin_1.png',
         'img/8_coin/coin_2.png',
-    ]
-     /**
-    * Array of image paths representing bottle frames for the World
-    * 
-    * @type {string[]}
-    * @param {string} IMAGES_COINS - Paths to bottles animation frames
-    */
+    ];
+    /**
+   * Array of image paths representing bottle frames for the World
+   * 
+   * @type {string[]}
+   * @param {string} IMAGES_COINS - Paths to bottles animation frames
+   */
     IMAGES_BOTTLES = [
         'img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
         'img/6_salsa_bottle/2_salsa_bottle_on_ground.png',
-    ]
+    ];
+    /**
+    * Array of image paths representing flying frames for the Mosquito
+    * 
+    * @type {string[]}
+    * @param {string} MOSQUITO_FLIGHT - Paths to flying mosquito animation frames
+    */
+    MOSQUITO_FLIGHT = [
+        'img/10_enemies_mosquito/flight1.png',
+        'img/10_enemies_mosquito/flight2.png',
+        'img/10_enemies_mosquito/flight3.png',
+    ];
+    /**
+   * Array of image paths representing attack frames for the Mosquito
+   * 
+   * @type {string[]}
+   * @param {string} MOSQUITO_ATTACK - Paths to attacking mosquito animation frames
+   */
+    MOSQUITO_ATTACK = [
+        // 'img/10_enemies_mosquito/attack1_getto1.png',
+        // 'img/10_enemies_mosquito/attack1_getto2.png',
+        'img/10_enemies_mosquito/attack2_cycle1.png',
+        'img/10_enemies_mosquito/attack2_cycle2.png',
+        'img/10_enemies_mosquito/attack2_cycle3.png',
+        // 'img/10_enemies_mosquito/attack3_get_out.png',
+    ];
+    /**
+      * Array of image paths representing dead frames for the Mosquito
+      * 
+      * @type {string[]}
+      * @param {string} MOSQUITO_DEAD - Paths to dead mosquito animation frames
+      */
+    MOSQUITO_DEAD = [
+        'img/10_enemies_mosquito/death1.png',
+        'img/10_enemies_mosquito/death2.png',
+        'img/10_enemies_mosquito/death3.png',
+        'img/10_enemies_mosquito/death4.png',
+    ];
+     /**
+      * Array of image paths representing idle frames for the Mosquito
+      * 
+      * @type {string[]}
+      * @param {string} MOSQUITO_IDLE - Paths to idle mosquito animation frames
+      */
+     MOSQUITO_IDLE = [
+        'img/10_enemies_mosquito/idle1.png',
+        'img/10_enemies_mosquito/idle2.png',
+        'img/10_enemies_mosquito/idle3.png',
+     ];
 }
