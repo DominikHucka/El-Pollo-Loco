@@ -15,9 +15,10 @@ class World {
     throwableObjects = [];
     collectedBottles = [];
     collectedCoins = [];
-    mosquito = new Mosquito();
     endBoss = new EndBoss();
     backgroundObject = new BackgroundObject();
+    lastBottleThrowTime = 0;
+    bottleThrowCooldown = 1000;
 
 
     constructor(canvas, keyboard) {
@@ -51,39 +52,42 @@ class World {
 
 
     checkCollisionChickens() {
-        this.level.chickens.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
-                if (enemy.isColliding(this.character) && this.character.isAboveGround()) {
-                    enemy.hit(100);
-                    this.character.jump();
-
-                } else {
-                    this.character.hit(5);
-                }
-                this.hpBar.setPercentage(this.character.energy);
-            } else if (enemy.energy == 0) {
-                enemy.stopInterval();
-                enemy.disappearObject(700);
-            }
-        })
+        this.checkCollision(this.level.chickens, this.character, this.hpBar);
     }
 
 
     checkCollisionMosquito() {
-        if (this.character.isSpotted(290)) {
-            console.log('start fight');
-            this.mosquito.flyingAttack();
-        }
+        this.checkCollision(this.level.mosquito, this.character, this.hpBar);
+        this.checkCollision(this.level.mosquitoSecondSwarm, this.character, this.hpBar);
+        this.checkCollision(this.level.mosquitoLastSwarm, this.character, this.hpBar);
     }
+
+
+    checkCollision(enemies, character, hpBar) {
+        enemies.forEach((enemy) => {
+            if (character.isColliding(enemy) && character.isAboveGround()) {
+                enemy.hit(100);
+                character.jump();
+
+            } else if (character.isColliding(enemy)) {
+                character.hit(5);
+
+            } else if (enemy.energy === 0) {
+                enemy.stopInterval();
+                enemy.disappearObject(700);
+            }
+            hpBar.setPercentage(character.energy);
+        });
+    }
+
 
 
     checkCollisionEndboss() {
         if (this.endBoss.width === 100 && this.endBoss.isColliding(this.character)) {
             if (this.character.isAboveGround() && this.character.isColliding(this.endBoss)) {
                 this.character.jump();
-                // this.character.immunity(50);
-                this.endBoss.hit(20);
-                this.hpbarEndboss.setPercentage(this.endBoss.energy);
+                this.endBoss.hit(10);
+                this.hpbarEndboss.setPercentage(this.endBoss.energy)
             } else {
                 this.character.hit(50);
                 this.hpBar.setPercentage(this.character.energy);
@@ -120,42 +124,30 @@ class World {
 
 
     startEndbossFight() {
-        if (this.character.isSpotted(2300)) {
+        if (this.character.isSpotted(2300) && this.endBoss.energy == 100) {
             this.endBoss.speed = 1.5;
             playSound(startEndboss);
             playSound(startScreamEndboss);
-            console.log('Start Fight', this.character.isSpotted())
+
         } else if (this.endBoss.energy <= 80) {
             this.endBoss.speed = 2.5;
-        }
-        if (this.endBoss.energy <= 20) {
+            // stopSound(startScreamEndboss);
+        } 
+
+        if (this.endBoss.energy <= 40) {
             setTimeout(() => {
                 this.endBoss.enraged();
-            }, 200);
+            }, 100);
         }
     }
 
 
     collectObjects() {
         setTimeout(() => {
-            // this.collectItems(this.level.bottles, this.collectedBottles, this.bottleBar, this.collectBottles.limitOfBottles, collectBottle);
-            // this.collectItems(this.level.coins, this.collectedCoins, this.coinBar, this.collectCoins.limitOfCoins, collectCoin);
             this.collectItemBottles();
             this.collectItemCoins();
         }, 5);
     }
-
-
-    // collectItems(itemArray, collectedItems, bar, limit, collectSound) {
-    //     itemArray.forEach((item, i) => {
-    //         if (this.character.isColliding(item) && collectedItems.length < limit) {
-    //             collectedItems.push(new bar());
-    //             bar.updateBar(collectedItems.length);
-    //             itemArray.splice(i, 1);
-    //             playSound(collectSound);
-    //         }
-    //     });
-    // }
 
 
     collectItemBottles() {
@@ -183,12 +175,16 @@ class World {
 
 
     checkThrowObjects() {
-        if (this.keyboard.D && this.collectedBottles.length > 0) {
+        let currentTime = new Date().getTime();
+
+        if (this.keyboard.D && this.collectedBottles.length > 0 && currentTime - this.lastBottleThrowTime >= this.bottleThrowCooldown && this.character.otherDirection === false) { // Berechnung für meine Flaschen Cool down für 1 Sekunde 
             let bottle = new ThrowableObjects(this.character.x + 100, this.character.y + 100);
+            bottle.world = this;
             this.throwableObjects.push(bottle);
             this.collectedBottles.splice(-1);
             this.bottleBar.updateBar(this.collectedBottles.length);
-            playSound(throwCharacter, 0.5)
+            playSound(throwCharacter, 0.5);
+            this.lastBottleThrowTime = currentTime;
         }
     }
 
@@ -213,6 +209,9 @@ class World {
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.coins);
         this.addObjectToMap(this.level.chickens);
+        this.addObjectToMap(this.level.mosquito);
+        this.addObjectToMap(this.level.mosquitoSecondSwarm);
+        this.addObjectToMap(this.level.mosquitoLastSwarm);
     }
 
 
@@ -226,7 +225,6 @@ class World {
         this.addToMap(this.iconFromEndboss);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
-        this.addToMap(this.mosquito);
         this.ctx.translate(-this.camera_x, 0);
     }
 

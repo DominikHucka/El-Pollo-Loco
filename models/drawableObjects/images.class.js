@@ -248,20 +248,6 @@ class DrawImages {
         'img/10_enemies_mosquito/flight3.png',
     ];
     /**
-   * Array of image paths representing attack frames for the Mosquito
-   * 
-   * @type {string[]}
-   * @param {string} MOSQUITO_ATTACK - Paths to attacking mosquito animation frames
-   */
-    MOSQUITO_ATTACK = [
-        // 'img/10_enemies_mosquito/attack1_getto1.png',
-        // 'img/10_enemies_mosquito/attack1_getto2.png',
-        'img/10_enemies_mosquito/attack2_cycle1.png',
-        'img/10_enemies_mosquito/attack2_cycle2.png',
-        'img/10_enemies_mosquito/attack2_cycle3.png',
-        // 'img/10_enemies_mosquito/attack3_get_out.png',
-    ];
-    /**
       * Array of image paths representing dead frames for the Mosquito
       * 
       * @type {string[]}
@@ -273,15 +259,31 @@ class DrawImages {
         'img/10_enemies_mosquito/death3.png',
         'img/10_enemies_mosquito/death4.png',
     ];
-     /**
-      * Array of image paths representing idle frames for the Mosquito
-      * 
-      * @type {string[]}
-      * @param {string} MOSQUITO_IDLE - Paths to idle mosquito animation frames
-      */
-     MOSQUITO_IDLE = [
-        'img/10_enemies_mosquito/idle1.png',
-        'img/10_enemies_mosquito/idle2.png',
-        'img/10_enemies_mosquito/idle3.png',
-     ];
+    /**
+     * Array of image paths representing throw => rotaion frames for the Bottle
+     * 
+     * @type {string[]}
+     * @param {string} IMAGES_THROWBOTTLE - Paths to rotation bottle animation frames
+     */
+    IMAGES_THROWBOTTLE = [
+        'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
+        'img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
+        'img/6_salsa_bottle/bottle_rotation/3_bottle_rotation.png',
+        'img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png',
+    ];
+    /**
+     * Array of image paths representing spalsh  frames for the Bottle
+     * 
+     * @type {string[]}
+     * @param {string} IMAGES_SPLASH - Paths to splash bottle animation frames
+     */
+    IMAGES_SPLASH = [
+        'img/6_salsa_bottle/bottle_rotation/bottle_splash/1_bottle_splash.png',
+        'img/6_salsa_bottle/bottle_rotation/bottle_splash/2_bottle_splash.png',
+        'img/6_salsa_bottle/bottle_rotation/bottle_splash/3_bottle_splash.png',
+        'img/6_salsa_bottle/bottle_rotation/bottle_splash/4_bottle_splash.png',
+        'img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png',
+        'img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png',
+    ];
+
 }

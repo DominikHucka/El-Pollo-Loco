@@ -64,6 +64,12 @@ class MovableObject extends DrawableObject {
     }
 
 
+    resetPosition() {
+        this.x = 2800 + Math.random() * 100;
+        this.y = 50 - Math.random() * 50;
+    }
+
+
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];

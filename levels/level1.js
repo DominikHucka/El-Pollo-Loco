@@ -1,14 +1,34 @@
 const level1 = new Level(
+    [
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+    ],
 
 
     [
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
+        new Mosquito(),
+        new Mosquito(),
+        new Mosquito(),
+        new Mosquito(),
     ],
 
+
+    [
+        new MosquitoSecondSwarm(),
+        new MosquitoSecondSwarm(),
+        new MosquitoSecondSwarm(),
+        new MosquitoSecondSwarm(),
+    ],
+
+
+    [
+        new MosquitoLastSwarm(),
+        new MosquitoLastSwarm(),
+    ],
     
+
     [
         new Cloud(),
     ],

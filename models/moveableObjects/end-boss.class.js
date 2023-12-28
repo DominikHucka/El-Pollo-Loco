@@ -82,7 +82,7 @@ class EndBoss extends MovableObject {
     enraged() {
         this.height = 150;
         this.width = 100;
-        this.speed = 10;
+        this.speed = 12;
         this.y = 280;
         this. offset = {
             left: 20,

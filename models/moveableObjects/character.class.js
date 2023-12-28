@@ -52,9 +52,13 @@ class Character extends MovableObject {
             ) {
                 this.counterLongidle = 0;
             }
-
-            this.world.camera_x = -this.x + 100;
-
+            if (this.world.endBoss.energy <= 40) {
+                setTimeout(() => {
+                    this.world.camera_x = -this.x + 250;
+                }, 50);
+            } else {
+                this.world.camera_x = -this.x + 100;
+            }           
         }, 1000 / 60);
 
 
