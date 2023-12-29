@@ -44,33 +44,50 @@
         <div id="start" class="start">
             <div id="overlay" class="overlay d-none">
                 <div class="overlay-button">
-                    <span class="hoverStyle play">PLAY GAME</span>
-                    <span class="hoverStyle back">BACK</span>
-                    <span class="hoverStyle mechanic">Game Mechanic</span>
-                    <span class="hoverStyle enemies">Enemies</span>
-                    <span class="hoverStyle boss">Boss Battle</span>
+                    <span onclick="startGame()" class="hoverStyle play">PLAY GAME</span>
+                    <span onclick="backToMenu()" class="hoverStyle back">BACK</span>
+                    <span id="pageMechanic" onclick="nextPageMechanic('pageMechanic')" class="hoverStyleAbout mechanic">Game Mechanic</span>
+                    <span id="pageEnemies" onclick="nextPageEnemies('pageEnemies')" class="hoverStyleAbout enemies">Enemies</span>
+                    <span id="pageBoss" onclick="nextPageBoss('pageBoss')" class="hoverStyleAbout boss">Boss Battle</span>
                 </div>
-                <div class="information">
-                    <p>
+            
+                <div id="aboutGame" class="information">
+                    <p class="page-information">
                         <b>"El Pollo Loco"</b> is an action-packed game where players control a character using arrow
                         keys to
                         navigate forward and backward. <br> The game features dynamic gameplay with the following
                         mechanics:
                     </p>
                 </div>
-                <!-- Movement: Navigate through the game using the arrow keys.
-                    Bottle Throw (Key D): Pressing the 'D' key allows players to throw bottles with a 1-second cooldown.
-                    Use this skill strategically.
-                    Jump (Space): The 'Space' key enables the character to jump, essential for avoiding obstacles and
-                    engaging enemies.
-                    Enemies: Encounter two types of adversaries – smaller chickens and a mosquito army. Defeat them by
-                    jumping on them.
-                    Boss Battle: Face the final challenge – a colossal chicken. Initially, attack it with bottles, but
-                    beware, taking damage increases its speed. Stay mobile and maintain a safe distance.
-                    Enraged Mode: As the boss nears defeat, it enters an enraged state. Although smaller, it becomes
-                    faster and deals triple damage. Avoid getting hit; it's more effective to defeat it by jumping on
-                    top. Be prepared for multiple attempts as it won't die instantly from a single jump. -->
-
+                <div id="aboutGameMechanic" class="information d-none">
+                    <p class="page-information">
+                        <b>Movement:</b> Navigate through the game using the arrow keys.
+                        Bottle Throw <b>(Key D): Pressing the 'D'</b> key allows players to throw bottles with a 1-second
+                        cooldown.
+                        Use this skill strategically.
+                        <b>Jump (Space): The 'Space'</b> key enables the character to jump, essential for avoiding obstacles
+                        and
+                        engaging enemies.
+                    </p>
+                </div>
+                <div id="aboutEnemies" class="information d-none">
+                    <p class="page-information">
+                        <b>Enemies:</b> Encounter two types of adversaries – smaller chickens and a mosquito army. Defeat them
+                        by
+                        jumping on them.
+                    </p>
+                </div>
+                <div id="aboutBossBattle" class="information d-none">
+                    <p class="page-information">
+                        <b>Boss Battle:</b> Face the final challenge – a colossal chicken. Initially, attack it with bottles,
+                        but
+                        beware, taking damage increases its speed. Stay mobile and maintain a safe distance.
+                        <b>Enraged Mode:</b> As the boss nears defeat, it enters an enraged state. Although smaller, it becomes
+                        faster and deals triple damage. Avoid getting hit; it's more effective to defeat it by jumping
+                        on
+                        top. Be prepared for multiple attempts as it won't die instantly from a single jump.
+                    </p>
+                </div>
             </div>
 
             <img id="startScreen" src="img/9_intro_outro_screens/start/startscreen_1.png">
@@ -81,18 +98,27 @@
                 <span class="hoverStyle hoverBackground" onclick="howToPlay()">How to play</span>
             </div>
             <div class="sound-check">
-                <img onclick="toggleSound()" src="img/11_start_page/sound_on.png">
+                <img id="soundOn" onclick="toggleSoundMenu()" src="img/11_start_page/sound_on.png">
             </div>
             <div class="sound-check">
-                <img class="d-none" onclick="toggleSound()" src="img/11_start_page/sound_off.png">
+                <img id="soundOff" class="d-none" onclick="toggleSoundMenu()" src="img/11_start_page/sound_off.png">
             </div>
         </div>
         <div class="canvas-container">
-            <div class="sound-check-ingame">
-                <img onclick="toggleSound()" src="img/11_start_page/sound_on.png">
+            <div id="overlayGameOver" class="overlay-game-over d-none">
+                <span class="hoverStyle hoverBackground start-game" onclick="startGame()">Play Again</span>
+                <span class="hoverStyle hoverBackground exit" onclick="exit()">Back to Menu</span>
+            </div>
+            <div id="overlayWin" class="overlay-win d-none">
+                <h2>! You Win !</h2>
+                <span class="hoverStyle hoverBackground start-game" onclick="startGame()">Play Again</span>
+                <span class="hoverStyle hoverBackground exit" onclick="exit()">Back to Menu</span>
             </div>
             <div class="sound-check-ingame">
-                <img class="d-none" onclick="toggleSound()" src="img/11_start_page/sound_off.png">
+                <img id="soundOnImage" onclick="toggleSound()" src="img/11_start_page/sound_on.png">
+            </div>
+            <div class="sound-check-ingame">
+                <img id="soundOffImage" class="d-none" onclick="toggleSound()" src="img/11_start_page/sound_off.png">
             </div>
             <canvas id="canvas" width="720" height="480"></canvas>
         </div>

@@ -136,6 +136,7 @@ class Character extends MovableObject {
     animateCharacter() {
         if (this.isDead()) {
             this.playAnimation(this.drawImages.CHARACTER_DEAD);
+            this.world.looseGameScreener();
         } else if (this.isHurt()) {
             this.playHurtAnimation();
         } else if (this.isAboveGround()) {

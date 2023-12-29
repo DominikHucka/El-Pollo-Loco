@@ -20,10 +20,12 @@ class World {
     bottleThrowCooldown = 1000;
 
 
-    constructor(canvas, keyboard) {
+    constructor(canvas, keyboard, looseGameScreener, winGameScreener) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.looseGameScreener = looseGameScreener;
+        this.winGameScreener = winGameScreener;
         this.draw();
         this.setWorld();
         this.run();
@@ -52,6 +54,7 @@ class World {
             this.checkCollisionEndboss();
             this.checkCollisionBottles();
             this.startEndbossFight();
+            this.showWinningScreen();
         }, 150);
     }
     /**
@@ -248,7 +251,7 @@ class World {
      */
     stopGame() {
         this.endBoss.stopMove();
-        setTimeout(() => {
+        setInterval(() => {
             this.clearAllIntervals();
         }, 1000);
     }
@@ -432,6 +435,12 @@ class World {
         this.bottleBar.updateBar(this.collectedBottles.length);
         playSound(throwCharacter, 0.5);
         this.lastBottleThrowTime = currentTime;
+    }
+
+    showWinningScreen() {
+        if (this.endBoss.isDead()) {
+            this.winGameScreener();
+        }
     }
     /**
      * Draws the game elements, translating the context based on the camera position.

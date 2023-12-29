@@ -39,6 +39,7 @@ class ArmyOfMosquitos extends MovableObject {
     playAnimations() {
         if (this.isDead()) {
             this.playAnimation(this.drawImages.MOSQUITO_DEAD);
+            playSound(deadMosquito);
         } else {
             this.playAnimation(this.drawImages.MOSQUITO_FLIGHT);
         }

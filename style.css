@@ -24,6 +24,10 @@ p {
     display: none !important;
 }
 
+.hidden {
+    display: none;
+}
+
 .hoverStyle {
     transition: color 1s ease-in-out;
     transition: transform .2s;
@@ -32,16 +36,25 @@ p {
 .enemies {
     bottom: 20%;
     left: 45%;
+    font-size: 30px;
 }
 
 .mechanic {
     bottom: 20%;
     left: 10%;
+    font-size: 30px;
 }
 
 .boss {
     bottom: 20%;
     right: 15%;
+    font-size: 30px;
+}
+
+.hoverStyleAbout:hover {
+    cursor: pointer;
+    color: #0d9fc9;
+    transform: scale(1.2);
 }
 
 .hoverStyle:hover {
@@ -60,6 +73,10 @@ p {
     background-color: #000000;
     border-radius: 20px;
     padding: 10px;
+}
+
+.page-information {
+    font-size: 18px;
 }
 
 
@@ -117,6 +134,65 @@ span {
     align-items: center;
     background-image: url('img/11_start_page/ripped_paper.png');
     background-size: cover;
+}
+
+.overlay-game-over {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('img/9_intro_outro_screens/game_over/game\ over!.png');
+    background-size: cover;
+    background-position-y: start;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-win {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('img/5_background/second_half_background.png');
+    background-size: cover;
+    background-position-y: start;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.overlay-game-over span {
+    position: absolute;
+    bottom: 10%;
+}
+
+.overlay-win h2 {
+    font-size: 82px;
+    color: #ffa400;
+    text-shadow: 1px 12px 12px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-win span {
+    position: absolute;
+    bottom: 10%;
+}
+
+.start-game {
+    left: 20%;
+}
+
+.exit {
+    right: 20%;
 }
 
 .overlay-button span {
