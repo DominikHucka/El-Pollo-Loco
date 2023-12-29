@@ -28,9 +28,11 @@ function loadGame() {
 }
 
 
-function settings() {
-     document.getElementById('start').style.display = 'none';
-     document.getElementById('canvas').style.display = 'none';
+function howToPlay() {
+     let overlay = document.getElementById('overlay');
+     // let startScreen = document.getElementById('content');
+     overlay.classList.remove('d-none');
+     // startScreen.classList.add('d-none');
 }
 /**
  * @description Event listener for keydown events to set corresponding flags in the keyboard object.

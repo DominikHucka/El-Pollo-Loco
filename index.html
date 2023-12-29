@@ -40,9 +40,39 @@
 
     <h1 id="title">El Pollo Loco</h1>
 
-    <div class="content">
+    <div id="content" class="content">
         <div id="start" class="start">
-            <div class="overlaySettings d-none"></div>
+            <div id="overlay" class="overlay d-none">
+                <div class="overlay-button">
+                    <span class="hoverStyle play">PLAY GAME</span>
+                    <span class="hoverStyle back">BACK</span>
+                    <span class="hoverStyle mechanic">Game Mechanic</span>
+                    <span class="hoverStyle enemies">Enemies</span>
+                    <span class="hoverStyle boss">Boss Battle</span>
+                </div>
+                <div class="information">
+                    <p>
+                        <b>"El Pollo Loco"</b> is an action-packed game where players control a character using arrow
+                        keys to
+                        navigate forward and backward. <br> The game features dynamic gameplay with the following
+                        mechanics:
+                    </p>
+                </div>
+                <!-- Movement: Navigate through the game using the arrow keys.
+                    Bottle Throw (Key D): Pressing the 'D' key allows players to throw bottles with a 1-second cooldown.
+                    Use this skill strategically.
+                    Jump (Space): The 'Space' key enables the character to jump, essential for avoiding obstacles and
+                    engaging enemies.
+                    Enemies: Encounter two types of adversaries – smaller chickens and a mosquito army. Defeat them by
+                    jumping on them.
+                    Boss Battle: Face the final challenge – a colossal chicken. Initially, attack it with bottles, but
+                    beware, taking damage increases its speed. Stay mobile and maintain a safe distance.
+                    Enraged Mode: As the boss nears defeat, it enters an enraged state. Although smaller, it becomes
+                    faster and deals triple damage. Avoid getting hit; it's more effective to defeat it by jumping on
+                    top. Be prepared for multiple attempts as it won't die instantly from a single jump. -->
+
+            </div>
+
             <img id="startScreen" src="img/9_intro_outro_screens/start/startscreen_1.png">
             <div class="play-game">
                 <span class="hoverStyle hoverBackground" onclick="startGame()">Play Game</span>
@@ -50,16 +80,45 @@
             <div class="instruction">
                 <span class="hoverStyle hoverBackground" onclick="howToPlay()">How to play</span>
             </div>
-            <div class="sign">
-                <span class="hoverStyle hoverBackground" onclick="settings()">Settings</span>
+            <div class="sound-check">
+                <img onclick="toggleSound()" src="img/11_start_page/sound_on.png">
+            </div>
+            <div class="sound-check">
+                <img class="d-none" onclick="toggleSound()" src="img/11_start_page/sound_off.png">
             </div>
         </div>
-        
-
-        <canvas id="canvas" width="720" height="480"></canvas>
+        <div class="canvas-container">
+            <div class="sound-check-ingame">
+                <img onclick="toggleSound()" src="img/11_start_page/sound_on.png">
+            </div>
+            <div class="sound-check-ingame">
+                <img class="d-none" onclick="toggleSound()" src="img/11_start_page/sound_off.png">
+            </div>
+            <canvas id="canvas" width="720" height="480"></canvas>
+        </div>
     </div>
-
-
+    <div class="keyboard-container">
+        <div class="keyboard-instruction">
+            <div class="arrow arrow-left">
+                <img src="img/11_start_page/arrow.png">
+                <span>LEFT</span>
+            </div>
+            <div class="arrow">
+                <span>Space</span>
+                <span>=</span>
+                <span>JUMP</span>
+            </div>
+            <div class="arrow arrow-right">
+                <span>RIGHT</span>
+                <img src="img/11_start_page/arrow.png">
+            </div>
+        </div>
+        <div class="arrow">
+            <span>D</span>
+            <span>=</span>
+            <span>THROW BOTTLE</span>
+        </div>
+    </div>
 </body>
 
 </html>

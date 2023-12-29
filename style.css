@@ -11,13 +11,37 @@ body {
     font-family: 'zabras', Arial, Helvetica, sans-serif;
 }
 
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.information {
+    width: 60%;
+}
+
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .hoverStyle {
     transition: color 1s ease-in-out;
     transition: transform .2s;
+}
+
+.enemies {
+    bottom: 20%;
+    left: 45%;
+}
+
+.mechanic {
+    bottom: 20%;
+    left: 10%;
+}
+
+.boss {
+    bottom: 20%;
+    right: 15%;
 }
 
 .hoverStyle:hover {
@@ -81,7 +105,7 @@ span {
     text-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-.overlay-settings {
+.overlay {
     z-index: 10;
     position: absolute;
     top: 0;
@@ -91,11 +115,22 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-  -o-filter: blur(10px);
-  -ms-filter: blur(10px);
+    background-image: url('img/11_start_page/ripped_paper.png');
+    background-size: cover;
+}
+
+.overlay-button span {
+    position: absolute;
+}
+
+.play {
+    top: 20%;
+    left: 20%;
+}
+
+.back {
+    top: 20%;
+    right: 20%;
 }
 
 .sign {
@@ -112,6 +147,63 @@ span {
     right: 5%;
 }
 
+.sound-check img {
+    height: 80px;
+    position: absolute;
+    right: 45%;
+    top: 2%;
+    transition: transform .2s ease-out;
+    z-index: 9;
+}
+
+.sound-check img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+.sound-check-ingame img {
+    height: 40px;
+    position: absolute;
+    top: 6%;
+    right: 48%;
+    transition: transform .2s ease-out;
+}
+
+.sound-check-ingame img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.keyboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.keyboard-instruction {
+    display: flex;
+    gap: 8em;
+    padding: 10px;
+}
+
+.arrow {
+    gap: 10px;
+}
+
+.arrow img {
+    height: 30px;
+}
+
+.arrow-left img {
+    rotate: 90deg;
+}
+
+.arrow-right img {
+    rotate: -90deg;
+}
+
 canvas {
     background-color: rgb(87, 87, 87);
     display: block;
@@ -120,7 +212,8 @@ canvas {
 
 @font-face {
     font-family: 'zabras';
-    src: url('/fonts/Zabars.ttf') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src: url('/fonts/Zabars.ttf') format('woff'),
+        /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* ----- SMARTPHONES ------*/
