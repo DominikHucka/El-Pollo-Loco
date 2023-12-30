@@ -373,13 +373,23 @@ button {
         display: flex;
     }
 
-    #title,
-    .keyboard-container {
+    #title, .keyboard-container, .fullscreen-image {
         display: none;
     }
 
     .page-information {
         font-size: 16px;
+    }
+
+    #soundOn, #soundOff {
+        right: 10%;
+        height: 60px;
+    }
+
+
+    .instruction span, .play-game span {
+        height: 30px;
+        font-size: 30px;
     }
 
     .mechanic, .enemies, .boss {
