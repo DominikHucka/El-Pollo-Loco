@@ -39,7 +39,7 @@ class World {
     */
     setWorld() {
         this.character.world = this;
-        playSound(gamePlay, 0.5, 1);
+        playAudioFromBeginning(gamePlay, 0.5, 1)
     }
     /**
     * Runs the game loop, checking collisions, updating objects, and managing game events.
@@ -82,14 +82,12 @@ class World {
     checkCollision(enemies, character, hpBar) {
         this.checkCollisionWithObjects(enemies, character, hpBar)
     }
-
-
     /**
-  * Checks collisions between a character and a group of enemies, updating the health bar accordingly.
-  * @param {Array} enemies - An array of enemy objects.
-  * @param {Object} character - The character object.
-  * @param {Object} hpBar - The health bar object.
-  */
+    * Checks collisions between a character and a group of enemies, updating the health bar accordingly.
+    * @param {Array} enemies - An array of enemy objects.
+    * @param {Object} character - The character object.
+    * @param {Object} hpBar - The health bar object.
+    */
     checkCollisionWithObjects(enemies, character, hpBar) {
         enemies.forEach((enemy) => {
             if (this.characterJumpOnEnemy(enemy, character)) {
@@ -436,10 +434,19 @@ class World {
         playSound(throwCharacter, 0.5);
         this.lastBottleThrowTime = currentTime;
     }
-
+    /**
+    * Displays the winning screen if the end boss is defeated.
+    * @function showWinningScreen
+    * @memberof Game
+    * @instance
+    * 
+    * @description Checks if the end boss is dead using the isDead method and shows the winning screen if true.
+    */
     showWinningScreen() {
         if (this.endBoss.isDead()) {
-            this.winGameScreener();
+            setTimeout(() => {
+                this.winGameScreener();
+            }, 1000);
         }
     }
     /**

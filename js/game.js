@@ -2,7 +2,7 @@ let keyboard = new Keyboard();
 let startScreenAudio = new Audio('audio/menu/miniature_saloon.wav');
 let world;
 startScreenAudio.loop = true;
-// playSound(startScreenAudio, .5, 1);
+playSound(startScreenAudio, .5, 1);
 let soundOn = true;
 /**
  * @description Initiates the game by initializing the level, game, and loading game data, and stops the start screen audio.
@@ -15,51 +15,99 @@ function startGame() {
      hide('overlayGameOver');
      hide('overlayWin');
 }
-
-
+/**
+ * Displays the game over screen when the player loses.
+ * @function looseGameScreener
+ * 
+ * @description Shows the 'overlayGameOver' element, clears all intervals, stops all sounds,
+ * and plays the 'loose' sound.
+ */
 function looseGameScreener() {
      show('overlayGameOver');
      clearAllIntervals();
+     stopAllSound();
+     playSound(loose);
 }
-
-
+/**
+ * Displays the winning screen when the player wins.
+ * @function winGameScreener
+ * 
+ * @description Shows the 'overlayWin' element, clears all intervals, stops all sounds,
+ * and plays the 'winning' sound.
+ */
 function winGameScreener() {
      show('overlayWin');
      clearAllIntervals();
+     stopAllSound();
+     playSound(winning);
 }
-
-
+/**
+ * Exits the current game state and returns to the start screen.
+ * @function exit
+ * 
+ * @description Hides the game-related overlays ('overlay', 'overlayGameOver', 'overlayWin'),
+ * shows the start screen ('start'), stops the 'winning' and 'loose' sounds, and plays the
+ * start screen audio from the beginning.
+ */
 function exit() {
      hide('overlay');
      hide('overlayGameOver');
      hide('overlayWin');
      show('start');
+     stopSound(winning);
+     stopSound(loose);
+     playAudioFromBeginning(startScreenAudio);
 }
-
-
+/**
+ * Applies a specific color style to the text color of an HTML element with the given ID.
+ * @function styleColor
+ * 
+ * @param {string} id - The ID of the HTML element to apply the style to.
+ * 
+ * @description Retrieves the element by ID, and if found, sets its text color to '#0d9fc9'.
+ */
 function styleColor(id) {
      let element = document.getElementById(id);
      if (element) {
           element.style.color = '#0d9fc9';
      }
 }
-
-
+/**
+ * Removes any explicitly set text color style from an HTML element with the given ID.
+ * @function styleNone
+ * 
+ * @param {string} id - The ID of the HTML element to remove the text color style from.
+ * 
+ * @description Retrieves the element by ID, and if found, removes any explicitly set text color style.
+ */
 function styleNone(id) {
      let element = document.getElementById(id);
      if (element) {
           element.style.color = '';
      }
 }
-
+/**
+ * Hides an HTML element with the given ID by adding the 'd-none' class.
+ * @function hide
+ * 
+ * @param {string} id - The ID of the HTML element to hide.
+ * 
+ * @description Retrieves the element by ID, and if found, adds the 'd-none' class to hide it.
+ */
 function hide(id) {
      let element = document.getElementById(id);
      if (element) {
           element.classList.add('d-none');
      }
 }
-
-
+/**
+ * Displays an HTML element with the given ID by removing the 'd-none' class.
+ * @function show
+ * 
+ * @param {string} id - The ID of the HTML element to display.
+ * 
+ * @description Retrieves the element by ID, and if found, removes the 'd-none' class to display it.
+ */
 function show(id) {
      let element = document.getElementById(id);
      if (element) {
@@ -81,7 +129,12 @@ function loadGame() {
           hide('start');
      }, 200);
 }
-
+/**
+ * Handles the logic for navigating to the next page related to game mechanics.
+ * @function nextPageMechanic
+ * 
+ * @description Updates styles and visibility to show information about game mechanics.
+ */
 function nextPageMechanic() {
      styleColor('pageMechanic');
      styleNone('pageEnemies');
@@ -91,8 +144,12 @@ function nextPageMechanic() {
      hide('aboutEnemies');
      hide('aboutBossBattle');
 }
-
-
+/**
+ * Handles the logic for navigating to the next page related to enemies.
+ * @function nextPageEnemies
+ * 
+ * @description Updates styles and visibility to show information about enemies.
+ */
 function nextPageEnemies() {
      styleColor('pageEnemies');
      styleNone('pageMechanic');
@@ -102,8 +159,12 @@ function nextPageEnemies() {
      show('aboutEnemies');
      hide('aboutBossBattle');
 }
-
-
+/**
+ * Handles the logic for navigating to the next page related to boss battles.
+ * @function nextPageBoss
+ * 
+ * @description Updates styles and visibility to show information about boss battles.
+ */
 function nextPageBoss() {
      styleColor('pageBoss');
      styleNone('pageEnemies');
@@ -113,8 +174,13 @@ function nextPageBoss() {
      hide('aboutEnemies');
      show('aboutBossBattle');
 }
-
-
+/**
+ * Toggles the sound menu between play and pause for the start screen audio.
+ * @function toggleSoundMenu
+ * 
+ * @description Plays the start screen audio with reduced volume and updates the sound icons accordingly.
+ * If the audio is already playing, stops it and updates the sound icons accordingly.
+ */
 function toggleSoundMenu() {
      if (startScreenAudio.paused) {
           playSound(startScreenAudio, 0.5, 1);
@@ -126,7 +192,12 @@ function toggleSoundMenu() {
           document.getElementById('soundOff').classList.remove('d-none');
      }
 }
-
+/**
+ * Mutes all sound elements in the game.
+ * @function muteAllSounds
+ * 
+ * @description Sets the 'muted' property to true for all specified sound elements.
+ */
 function muteAllSounds() {
      const allSoundsMuted = [
           walkCharacter, jumpCharacter, hurtCharacter, throwCharacter,
@@ -139,8 +210,12 @@ function muteAllSounds() {
           sound.muted = true;
      });
 }
-
-
+/**
+ * Unmutes all sound elements in the game.
+ * @function unmuteAllSounds
+ * 
+ * @description Sets the 'muted' property to false for all specified sound elements.
+ */
 function unmuteAllSounds() {
      const allSounds = [
           walkCharacter, jumpCharacter, hurtCharacter, throwCharacter,
@@ -153,8 +228,31 @@ function unmuteAllSounds() {
           sound.muted = false;
      });
 }
+/**
+ * Stops all sound elements in the game.
+ * @function stopAllSound
+ * 
+ * @description Stops the playback of all specified sound elements.
+ */
+function stopAllSound() {
+     const allSoundPlayStop = [
+          walkCharacter, jumpCharacter, hurtCharacter, throwCharacter,
+          deadChicken, collectBottle, collectCoin, themeStart, gamePlay,
+          smashBottle, rotationBottle, startEndboss, startScreamEndboss, hitEndboss,
+          HowToPlaySound, aboutPages, deadMosquito
+     ];
 
-
+     allSoundPlayStop.forEach(function (sound) {
+          stopSound(sound);
+     });
+}
+/**
+ * Toggles the overall sound state between on and off.
+ * @function toggleSound
+ * 
+ * @description Updates the sound state variable, toggles the visibility of sound icons, 
+ * and either mutes or unmutes all game sounds based on the updated state.
+ */
 function toggleSound() {
      soundOn = !soundOn;
      if (soundOn) {
@@ -167,20 +265,40 @@ function toggleSound() {
           muteAllSounds();
      }
 }
-
-
+/**
+ * Returns to the main menu from the How to Play screen.
+ * @function backToMenu
+ * 
+ * @description Hides the overlay, plays the 'HowToPlayGame' with adjusted volume and speed,
+ * removes styles from navigation pages, hides specific information sections, and shows the main game information.
+ */
 function backToMenu() {
      hide('overlay');
-     playSound(HowToPlaySound, 1, 2);
+     playSound(HowToPlaySound);
+     styleNone('pageEnemies');
+     styleNone('pageMechanic');
+     styleNone('pageBossBattle');
+     hide('aboutGameMechanic');
+     show('aboutGame');
+     hide('aboutEnemies');
+     hide('aboutBossBattle');
 }
-
-
+/**
+ * Displays the How to Play overlay and plays the corresponding sound.
+ * @function howToPlay
+ * 
+ * @description Shows the 'overlay' element and plays the 'HowToPlaySound' with adjusted volume and speed.
+ */
 function howToPlay() {
      show('overlay');
      playSound(HowToPlaySound, 1, 2);
 }
-
-
+/**
+ * Clears all intervals set in the window.
+ * @function clearAllIntervals
+ * 
+ * @description Iterates through interval IDs and clears them, stopping any recurring functions.
+ */
 function clearAllIntervals() {
      for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }

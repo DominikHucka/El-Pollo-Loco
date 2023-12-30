@@ -11,8 +11,10 @@ const deadMosquito = mosquito_dead_sound = new Audio('audio/enemies/mosquito_dea
 // BACKGROUND
 const collectBottle = collect_sound = new Audio('audio/levels/collect.wav');
 const collectCoin = coin_sound = new Audio('audio/levels/coin (1).flac');
-const themeStart = themeStart_sound = new Audio('audio/menu/miniature_saloon.wav');
-const gamePlay = gamePlay_sound = new Audio('audio/levels/spagetti western.ogg');
+const themeStart = new Audio('audio/menu/miniature_saloon.wav');
+const gamePlay = new Audio('audio/levels/spagetti western.ogg');
+themeStart.loop = true;
+gamePlay.loop = true;
 
 //THROW ITEMS
 const smashBottle = smashBottle_sound = new Audio('audio/levels/smash_bottle.mp3');
@@ -24,11 +26,12 @@ const startScreamEndboss = startScreamEndboss_sound = new Audio('audio/enemies/e
 const hitEndboss = hitEndboss_sound = new Audio('audio/enemies/hit_endboss.mp3');
 
 //MENU
-const HowToPlaySound = howToPlay_sound = new Audio('audio/menu/paper.mp3'); 
-const aboutPages = abot_sound = new Audio('audio/menu/about.mp3'); 
+const HowToPlaySound = howToPlay_sound = new Audio('audio/menu/paper.mp3');
+const aboutPages = abot_sound = new Audio('audio/menu/about.mp3');
 
-
-
+//WIN AND LOOSE 
+const winning = win_sound = new Audio('audio/menu/win.mp3');
+const loose = loose_sound = new Audio('audio/menu/loose.mp3');
 /**
  * Plays a sound with customizable volume and playback rate.
  *
@@ -47,5 +50,17 @@ function playSound(sound, volume = 1.0, playbackRate = 1.0) {
  */
 function stopSound(sound) {
     sound.pause();
-    stopSound.currentTime = 0;
+    sound.currentTime = 0;
+}
+/**
+ * Plays the given audio from the beginning.
+ * @function playAudioFromBeginning
+ * 
+ * @param {Audio} audio - The audio element to be played from the beginning.
+ * 
+ * @description Resets the playback time of the provided audio to 0 and starts playing it.
+ */
+function playAudioFromBeginning(audio) {
+    audio.currentTime = 0;
+    audio.play();
 }
