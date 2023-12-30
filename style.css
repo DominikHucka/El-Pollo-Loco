@@ -4,7 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url('/img/11_start_page/background.png');
+    background-image: url('img/11_start_page/background.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -337,15 +337,28 @@ button {
 
 @font-face {
     font-family: 'zabras';
-    src: url('/fonts/Zabars.ttf') format('woff'),
+    src: url('fonts/Zabars.ttf') format('woff'),
         /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
+
+@media only screen and (min-width: 721px) {
+    #touchPanel {
+        display: none;
+    }
+}
+
+
 
 /* ----- SMARTPHONES ------*/
 
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
+    }
+
+    #touchPanel {
+        display: none;
     }
 }
 

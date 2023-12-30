@@ -38,7 +38,7 @@ class World {
     */
     setWorld() {
         this.character.world = this;
-        playAudioFromBeginning(gamePlay, 0.5, 1)
+        playAudioFromBeginning(gamePlay, .5, 1)
     }
     /**
     * Runs the game loop, checking collisions, updating objects, and managing game events.
