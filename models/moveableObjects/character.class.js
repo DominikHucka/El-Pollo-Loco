@@ -126,7 +126,7 @@ class Character extends MovableObject {
                 this.world.camera_x = -this.x + 250;
             }, 50);
         } else {
-            this.world.camera_x = -this.x + 100;
+            this.world.camera_x = -this.x + 200;
         }
     }
     /**

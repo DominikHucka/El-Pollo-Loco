@@ -81,6 +81,7 @@ p {
 
 
 h1 {
+    text-align: center;
     font-size: 72px;
     letter-spacing: 3px;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
@@ -217,16 +218,17 @@ span {
 }
 
 .instruction {
+    z-index: 1;
     display: flex;
     position: absolute;
     top: 5%;
-    right: 5%;
+    left: 30%;
 }
 
 .sound-check img {
     height: 80px;
     position: absolute;
-    right: 45%;
+    right: 20%;
     top: 2%;
     transition: transform .2s ease-out;
     z-index: 9;
@@ -239,10 +241,10 @@ span {
 
 
 .sound-check-ingame img {
-    height: 40px;
+    height: 30px;
     position: absolute;
-    top: 6%;
-    right: 48%;
+    top: 8%;
+    right: 51%;
     transition: transform .2s ease-out;
 }
 
@@ -285,6 +287,37 @@ canvas {
     display: block;
 }
 
+button {
+    background-color: #df343f;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+#btnLeft {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+#btnRight {
+    position: absolute;
+    bottom: 5%;
+    left: 20%;
+}
+
+#btnJump {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+#btnThrow {
+    position: absolute;
+    bottom: 5%;
+    right: 20%;
+}
+
 
 @font-face {
     font-family: 'zabras';
@@ -300,12 +333,44 @@ canvas {
     }
 }
 
-@media only screen and (max-height: 480px) {
-    canvas {
-        height: 100vh;
+@media only screen and (max-width: 719px) {
+    body {
+        height: 100%;
+        background-image: url('img/11_start_page/landscape_mode.png');
     }
 
-    #title {
+    .landscapeMode {
         display: none;
+    }
+}
+
+
+@media only screen and (max-height: 480px) {
+    canvas, .content, .canvas-container {
+        height: 100vh;
+        width: 100%;
+        content: 100%;
+    }
+
+    .landscapeMode {
+        width: 100%;
+        display: flex;
+    }
+
+    #title,
+    .keyboard-container {
+        display: none;
+    }
+
+    .page-information {
+        font-size: 16px;
+    }
+
+    .mechanic, .enemies, .boss {
+        bottom: 10%;
+    }
+
+    .page-information {
+        margin-top: 45px;
     }
 }

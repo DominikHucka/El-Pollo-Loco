@@ -29,7 +29,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-
     }
     /**
     * Sets the world property of the character and plays the gamePlay sound.

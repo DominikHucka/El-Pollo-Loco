@@ -2,18 +2,22 @@ let keyboard = new Keyboard();
 let startScreenAudio = new Audio('audio/menu/miniature_saloon.wav');
 let world;
 startScreenAudio.loop = true;
-playSound(startScreenAudio, .5, 1);
+// playSound(startScreenAudio, .5, 1);
 let soundOn = true;
 /**
  * @description Initiates the game by initializing the level, game, and loading game data, and stops the start screen audio.
  */
 function startGame() {
+     setupMobileControls()
      initLevel();
      init();
      loadGame();
      stopSound(startScreenAudio);
      hide('overlayGameOver');
      hide('overlayWin');
+     setTimeout(() => {
+          show('touchPanel');
+     }, 200);
 }
 /**
  * Displays the game over screen when the player loses.
@@ -54,6 +58,7 @@ function exit() {
      hide('overlayGameOver');
      hide('overlayWin');
      show('start');
+     hide('touchPanel');
      stopSound(winning);
      stopSound(loose);
      playAudioFromBeginning(startScreenAudio);
@@ -274,7 +279,7 @@ function toggleSound() {
  */
 function backToMenu() {
      hide('overlay');
-     playSound(HowToPlaySound);
+     playSound(HowToPlaySound, 1, 3);
      styleNone('pageEnemies');
      styleNone('pageMechanic');
      styleNone('pageBossBattle');
@@ -358,6 +363,40 @@ window.addEventListener('keyup', (event) => {
           keyboard.D = false;
      }
 });
+/**
+ * Sets up mobile controls for the game, allowing touch input for movement and actions.
+ *
+ */
+function setupMobileControls() {
+     const btnLeft = document.getElementById('btnLeft');
+     const btnRight = document.getElementById('btnRight');
+     const btnJump = document.getElementById('btnJump');
+     const btnThrow = document.getElementById('btnThrow');
+     btnLeft.addEventListener('touchstart', () => {
+          keyboard.LEFT = true;
+     });
+     btnLeft.addEventListener('touchend', () => {
+          keyboard.LEFT = false;
+     });
+     btnRight.addEventListener('touchstart', () => {
+          keyboard.RIGHT = true;
+     });
+     btnRight.addEventListener('touchend', () => {
+          keyboard.RIGHT = false;
+     });
+     btnJump.addEventListener('touchstart', () => {
+          keyboard.SPACE = true;
+     });
+     btnJump.addEventListener('touchend', () => {
+          keyboard.SPACE = false;
+     });
+     btnThrow.addEventListener('touchstart', () => {
+          keyboard.D = true;
+     });
+     btnThrow.addEventListener('touchend', () => {
+          keyboard.D = false;
+     });
+}
 
 
 

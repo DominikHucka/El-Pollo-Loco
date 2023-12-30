@@ -11,7 +11,6 @@ class EndBoss extends MovableObject {
     };
     runArea = 1000;
     startingX = 2400;
-    // world;
 
 
     constructor() {
@@ -42,7 +41,6 @@ class EndBoss extends MovableObject {
      */
     stopMoveWhenDeath() {
         if (this.isDead()) {
-            // this.world.winGameScreener();
             this.stopMove();
             return;
         }
@@ -52,7 +50,6 @@ class EndBoss extends MovableObject {
      */
     enragedArea() {
         if (this.enragedEndboss()) {
-
             if (this.moveLeftArea()) {
                 this.moveLeft();
             } else {
