@@ -86,6 +86,12 @@ function initLevel() {
             new CollectCoins(),
         ],
 
+
+        [
+            new HealthPoints(),
+            new HealthPoints(),
+        ],
+
     );
 }
 

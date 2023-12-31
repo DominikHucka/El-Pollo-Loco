@@ -14,6 +14,8 @@ class MovableObject extends DrawableObject {
     intervalIds = [];
     i = 1;
     stopped = false;
+    healthPoint = 100;
+    lastHealth = 100;
     /**
     * Checks if this object is colliding with another movable object.
     * @param {MovableObject} mo - The movable object to check collision with.

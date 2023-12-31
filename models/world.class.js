@@ -41,21 +41,6 @@ class World {
         playAudioFromBeginning(gamePlay, .5, 1)
     }
     /**
-    * Displays the winning screen if the end boss is defeated.
-    * @function showWinningScreen
-    * @memberof Game
-    * @instance
-    * 
-    * @description Checks if the end boss is dead using the isDead method and shows the winning screen if true.
-    */
-    // showWinningScreen() {
-    //     if (this.endBoss.isDead()) {
-    //         setTimeout(() => {
-    //             this.winGameScreener();
-    //         }, 1000);
-    //     }
-    // }
-    /**
      * Draws the game elements, translating the context based on the camera position.
      */
     draw() {
@@ -81,6 +66,7 @@ class World {
         this.addObjectToMap(this.level.mosquito);
         this.addObjectToMap(this.level.mosquitoSecondSwarm);
         this.addObjectToMap(this.level.mosquitoLastSwarm);
+        this.addObjectToMap(this.level.healthPoints);
     }
     /**
      * Draws game elements to the map.

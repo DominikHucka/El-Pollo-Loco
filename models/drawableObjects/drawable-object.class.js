@@ -8,11 +8,6 @@ class DrawableObject {
     width = 150;
     drawImages = new DrawImages();
     drawFrameEnabled = false;
-
-
-    // constructor() {
-    //     super();
-    // }
     /**
      * Draws the game elements, translating the context based on the camera position.
      */
@@ -116,7 +111,7 @@ class DrawableObject {
     * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of the canvas.
     */
     drawFrame(ctx) {
-        if (this.drawFrameEnabled && (this instanceof Character || this instanceof MosquitoLastSwarm)) {
+        if (this instanceof HealthPoints && (this instanceof Character || this instanceof MosquitoLastSwarm)) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";
