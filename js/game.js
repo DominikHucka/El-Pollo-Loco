@@ -2,7 +2,7 @@ let keyboard = new Keyboard();
 let startScreenAudio = new Audio('audio/menu/miniature_saloon.wav');
 let world;
 startScreenAudio.loop = true;
-// playSound(startScreenAudio, .5, 1);
+playSound(startScreenAudio, .5, 1);
 let soundOn = true;
 /**
  * @description Initiates the game by initializing the level, game, and loading game data, and stops the start screen audio.
@@ -125,6 +125,8 @@ function show(id) {
 function init() {
      canvas = document.getElementById('canvas');
      world = new World(canvas, keyboard, looseGameScreener, winGameScreener);
+     // drawWorld = new DrawWorld(canvas ,keyboard);
+     // collision = new Collision();     
 }
 /**
  * @description Hides the game start element after a delay to transition into the loaded game state.

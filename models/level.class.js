@@ -5,9 +5,9 @@ class Level {
     mosquitoLastSwarm;
     backgroundObjects;
     bottles;
-    level_end_x = 2800;
     clouds;
     coins;
+    level_end_x = 2800;
 
 
     constructor(chickens, mosquito, mosquitoSecondSwarm, mosquitoLastSwarm, clouds, backgroundObjects, bottles, coins) {

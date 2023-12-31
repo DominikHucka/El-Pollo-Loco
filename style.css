@@ -334,35 +334,27 @@ button {
     right: 20%;
 }
 
-
 @font-face {
     font-family: 'zabras';
     src: url('fonts/Zabars.ttf') format('woff'),
         /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-
-@media only screen and (min-width: 721px) {
+@media only screen and (min-width: 933px) {
     #touchPanel {
         display: none;
     }
 }
-
-
 
 /* ----- SMARTPHONES ------*/
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 932px) {
     canvas {
         width: 100%;
     }
-
-    #touchPanel {
-        display: none;
-    }
 }
 
-@media only screen and (max-width: 719px) {
+@media only screen and (max-width: 931px) {
     body {
         height: 100%;
         background-image: url('img/11_start_page/landscape_mode.png');

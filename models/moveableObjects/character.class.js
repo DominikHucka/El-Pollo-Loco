@@ -23,6 +23,7 @@ class Character extends MovableObject {
         this.loadImages(this.drawImages.CHARACTER_LONGIDLE);
         this.applyGravity();
         this.animate();
+        this.x = -250;
     }
     /**
     * @param {number} intervalTime - Time interval for character movement, long idle animation, and camera adjustment.

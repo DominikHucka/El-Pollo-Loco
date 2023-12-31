@@ -8,8 +8,11 @@ class DrawableObject {
     width = 150;
     drawImages = new DrawImages();
     drawFrameEnabled = false;
-    
 
+
+    // constructor() {
+    //     super();
+    // }
     /**
      * Draws the game elements, translating the context based on the camera position.
      */
