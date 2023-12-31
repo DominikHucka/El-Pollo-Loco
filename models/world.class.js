@@ -66,7 +66,6 @@ class World {
         this.addObjectToMap(this.level.mosquito);
         this.addObjectToMap(this.level.mosquitoSecondSwarm);
         this.addObjectToMap(this.level.mosquitoLastSwarm);
-        this.addObjectToMap(this.level.healthPoints);
     }
     /**
      * Draws game elements to the map.

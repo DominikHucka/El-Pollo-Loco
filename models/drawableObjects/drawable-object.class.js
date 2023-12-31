@@ -111,7 +111,7 @@ class DrawableObject {
     * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of the canvas.
     */
     drawFrame(ctx) {
-        if (this instanceof HealthPoints && (this instanceof Character || this instanceof MosquitoLastSwarm)) {
+        if (this.drawFrameEnabled && (this instanceof Character || this instanceof MosquitoLastSwarm)) {
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";

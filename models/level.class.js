@@ -7,11 +7,10 @@ class Level {
     bottles;
     clouds;
     coins;
-    healthPoints;
     level_end_x = 2800;
 
 
-    constructor(chickens, mosquito, mosquitoSecondSwarm, mosquitoLastSwarm, clouds, backgroundObjects, bottles, coins, healthPoints) {
+    constructor(chickens, mosquito, mosquitoSecondSwarm, mosquitoLastSwarm, clouds, backgroundObjects, bottles, coins) {
         this.chickens = chickens;
         this.mosquito = mosquito;
         this.mosquitoSecondSwarm = mosquitoSecondSwarm;
@@ -20,6 +19,5 @@ class Level {
         this.bottles = bottles;
         this.clouds = clouds;
         this.coins = coins;
-        this.healthPoints = healthPoints;
     }
 }
