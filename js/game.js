@@ -13,6 +13,7 @@ function startGame() {
      init();
      loadGame();
      stopSound(startScreenAudio);
+     stopSound(loose);
      hide('overlayGameOver');
      hide('overlayWin');
      setTimeout(() => {

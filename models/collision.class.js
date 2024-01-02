@@ -55,6 +55,7 @@ class Collision {
     checkCollisionWithObjects(enemies, character, hpBar) {
         enemies.forEach((enemy) => {
             if (this.characterJumpOnEnemy(enemy, character)) {
+                console.log('is Colliding', this.characterJumpOnEnemy(enemy, character));
                 this.characterKillEnemyAndJumpAgain(enemy, character);
             } else if (this.enemyCollidingCharacter(enemy, character)) {
                 this.hitCharacter(enemy, character);
@@ -71,7 +72,7 @@ class Collision {
      * @returns {boolean} - Returns true if the character jumps on the enemy.
      */
     characterJumpOnEnemy(enemy, character) {
-        return character.isColliding(enemy) && character.isAboveGround() && character.speedY < 0;
+        return character.isColliding(enemy)  && character.speedY < 0;
     }
     /**
      * Handles the character killing an enemy and jumping again.
@@ -160,7 +161,7 @@ class Collision {
      * @returns {boolean} - Returns true if the character jumps on the end boss.
      */
     characterJumpOnEndboss() {
-        return world.character.isAboveGround() && world.character.isColliding(world.endBoss) && world.character.speedY < 0;
+        return world.character.isColliding(world.endBoss) && world.character.speedY < 0;
     }
     /**
      * Handles the character hitting the end boss while jumping.

@@ -111,7 +111,7 @@ class DrawableObject {
     * @param {CanvasRenderingContext2D} ctx - The 2D rendering context of the canvas.
     */
     drawFrame(ctx) {
-        if (this.drawFrameEnabled && (this instanceof Character || this instanceof MosquitoLastSwarm)) {
+        if (this instanceof Chicken || this instanceof Character || this instanceof ArmyOfMosquitos) { 
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.strokeStyle = "red";
@@ -119,6 +119,8 @@ class DrawableObject {
             ctx.stroke();
         }
     }
+
+    // (this.drawFrameEnabled && (this instanceof Character || this instanceof MosquitoLastSwarm))
     /**
     * @description Loads images from an array and stores them in the image cache.
     * @param {string[]} arr - Array of image paths to be loaded.

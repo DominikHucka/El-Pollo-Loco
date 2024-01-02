@@ -38,7 +38,8 @@ class World {
     */
     setWorld() {
         this.character.world = this;
-        playAudioFromBeginning(gamePlay, .5, 1)
+        playSound(gamePlay, 0.2, 1);
+        playAudioFromBeginning(gamePlay);
     }
     /**
      * Draws the game elements, translating the context based on the camera position.
